@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import CategoryContainer from "./components/CategoryContainer";
+import DailyDeal from "./components/homePageFile/daily/DailyDeal";
+import Footer from "./components/layout/Footer";
+import Header from "./components/layout/Header";
+import WeeklyDealContainer from "./components/WeeklyDealContainer";
+import Homepage from "./components/homePageFile/Homepage";
+import Login from "./components/LoginFile/Login";
+import BeginSales from "./components/letBeginSales/BeginSales";
+import Purchase from "./components/purchase/Purchase";
+import Payment from "./components/paymentFile/Payment";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/payment" component={Payment} />
+        <Route path="/beginSales" component={BeginSales} />
+        <Route path="/purchase" component={Purchase} />
+        <Route path="/" component={Homepage} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 

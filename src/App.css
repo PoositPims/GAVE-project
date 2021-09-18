@@ -1,4 +1,65 @@
-.App {
+/* div {
+  outline: 1px dashed lime;
+} */
+
+.text-pink {
+  --bs-text-opacity: 1;
+  color: rgba(247, 175, 172, var(--bs-text-opacity)) !important;
+}
+.container-ping {
+  width: 1300px;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.bg-grey {
+  background-color: #f2f2f2;
+}
+
+.container-80 {
+  width: 1200px;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container-60 {
+  width: 600px;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container-50 {
+  width: 500px;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.inputEach {
+  height: 130px;
+  width: 130px;
+  border: 1px dashed black;
+}
+
+.inputEach img {
+  width: 50px;
+  height: 50px;
+  margin: 40px;
+}
+
+.inputInfoVeryLong {
+  width: 600px;
+  height: 200px;
+  padding: 4px;
+}
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +96,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
