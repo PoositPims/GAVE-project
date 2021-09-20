@@ -11,12 +11,16 @@ import BeginSales from "./components/letBeginSales/BeginSales";
 import Purchase from "./components/purchase/Purchase";
 import Payment from "./components/paymentFile/Payment";
 import ContactUs from "./components/contactUsFile/ContactUs";
+import Cart from "./components/cartFile/Cart";
+import ConfirmBuy from "./components/confirmBuy/ConfirmBuy";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/login" component={Login} />
+        {/* <Route path="/confirmbuy" component={ConfirmBuy} /> */}
+        <Route path="/cart" component={Cart} />
         <Route path="/contactus" component={ContactUs} />
         <Route path="/payment" component={Payment} />
         <Route path="/beginSales" component={BeginSales} />
