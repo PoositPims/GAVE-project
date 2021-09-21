@@ -12,14 +12,19 @@ import Purchase from "./components/purchase/Purchase";
 import Payment from "./components/paymentFile/Payment";
 import ContactUs from "./components/contactUsFile/ContactUs";
 import Cart from "./components/cartFile/Cart";
-import ConfirmBuy from "./components/confirmBuy/ConfirmBuy";
+// import ConfirmBuy from "./components/confirmBuy/ConfirmBuy";
+import SaleRegister from "./components/SalerRegisterFile/SaleRegister";
+import SellerProfile from "./components/sellerProfile/SellerProfile";
+import SellerEachPeoduct from "./components/SellerEachProduct/SellerEachPeoduct";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/login" component={Login} />
-        {/* <Route path="/confirmbuy" component={ConfirmBuy} /> */}
+        <Route path="/saleRegister" component={SaleRegister} />
+        <Route path="/sellerEachPeoduct" component={SellerEachPeoduct} />
+        <Route path="/sellerProfile" component={SellerProfile} />
         <Route path="/cart" component={Cart} />
         <Route path="/contactus" component={ContactUs} />
         <Route path="/payment" component={Payment} />
