@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import LoginList from "./LoginList";
+import { isEmpty } from "../services/validateService";
 
 function LoginContainer() {
   // const [name, setName] = useState("");
@@ -20,9 +21,27 @@ function LoginContainer() {
     confirmPass: "",
   });
 
+  const validateName = (value) => {
+    if (isEmpty(value)) {
+      //{payee: 'payee is require', amount:""Amount must be numeriv}
+      // วิธีที่ 1
+      // const newError = { ...Error };
+      // newError.payee = "Payee is required";
+      // setError(newError);
+      // วิธีที่ 2
+      // setError((curErr) => ({ ...curErr, payee: "Payee is required" })); //งง // เพิ่มค่า key value เขาไปใน Object ตัวนั้น
+      return "Name is required";
+    }
+    return "";
+  };
+
   const handleInputChange = (e) => {
     if (e.target.value === "") {
-      setError("กรุณากรอกข้อมูล");
+      // setError("กรุณากรอกข้อมูล");
+      setError((curErr) => ({
+        ...curErr,
+        value: validateName(e.target.value),
+      }));
       // ............................แก้บรรทัดนี้
     } else {
       setError("");

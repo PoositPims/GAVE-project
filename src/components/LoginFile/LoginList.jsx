@@ -1,6 +1,13 @@
 import React from "react";
 
-function LoginList({ loginTitle, onChange, name, input, error }) {
+function LoginList({
+  loginTitle,
+  onChange,
+  name,
+  input,
+  error,
+  handleInputChange,
+}) {
   console.log(error[name]);
   return (
     <div>
