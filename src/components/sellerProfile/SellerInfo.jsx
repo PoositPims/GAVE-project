@@ -32,12 +32,6 @@ function SellerInfo() {
               <span className="fw-bold text-primary">ชื่อเจ้าของร้าน :</span>
               {` นายหัว `}
             </p>
-            <p>
-              <span className="fw-bold text-primary">
-                ประเภทสินค้าทั้งหมด :
-              </span>
-              {` - อาหารและเครื่องดื่ม `}
-            </p>
           </div>
         </div>
       </div>

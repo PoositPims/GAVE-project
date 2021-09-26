@@ -54,13 +54,10 @@ function LoginContainer() {
   return (
     <>
       <div className="bg-primary">
-        <p className="text-center text-white fs-4 mt-3">
+        <p className="text-center text-white fs-4">
           เข้าสู่ระบบเพื่อดีลที่โดนใจ !
         </p>
-        <div
-          className="bg-white my-3 border rounded-3 container-60 border border-warning border-3"
-          style={{ height: "440px" }}
-        >
+        <div className="bg-white my-3 border rounded-3 container">
           <div className="mt-3 col">
             <LoginList
               loginTitle="ชื่อจริง"
@@ -97,13 +94,13 @@ function LoginContainer() {
               name="password"
               error={error}
             />
-            {/* <LoginList
+            <LoginList
               loginTitle="ยืนยันรหัสผ่าน"
               onChange={handleInputChange}
               value={input.confirmPass}
               name="confirmPass"
               error={error}
-            /> */}
+            />
           </div>
           <div className="text-center">
             <button

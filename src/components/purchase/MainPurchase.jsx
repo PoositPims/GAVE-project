@@ -11,7 +11,7 @@ function MainPurchase() {
             <img src="bottle2.jpg" alt="" width="100px" height="100px" />
             <img src="bottle2.jpg" alt="" width="100px" height="100px" />
           </div>
-          <p className="mt-2">ขายดีลรอบนี้ไปแล้ว 100 ดีล</p>
+          <p className="mt-2">มีสินค้าทั้งหมด 100 ชิ้น</p>
           <div className="d-flex">
             <p className="me-3">แชร์ดีล :</p>
             <a target="_blank" href="https://www.facebook.com" className="me-2">
@@ -52,30 +52,30 @@ function MainPurchase() {
             </div>
           </div>
           <div className="mt-3">
-            <div className="d-flex justify-content-between mt-2">
+            {/* <div className="d-flex justify-content-between mt-2">
               <p>ดีล</p>
               <p>10 แพ๊ค น้ำดื่มตราคริสตัน 1.5 ล. แพ็ค 6 ขวด </p>
-            </div>
-            <div className="d-flex justify-content-between mt-2">
+            </div> */}
+            {/* <div className="d-flex justify-content-between mt-2">
               <p>สิ้นสุดดีล</p>
               <p>23/07/21</p>
-            </div>
+            </div> */}
             <div className="d-flex justify-content-between mt-2">
               <p>ขนาด</p>
               <p>1.5 ลิตร แพ๊ค 6 ขวด (จำนวน 10 ลิตร)</p>
             </div>
             <div className="d-flex justify-content-between mt-2">
               <p>การจัดส่ง</p>
-              <p>กระจายสินค้าผ่านตัวแทน ในวันที่ 25/07/21</p>
+              <p>Thailand post</p>
             </div>
             <div className="d-flex justify-content-between mt-2">
               <p>จำนวน</p>
               <p>ชิ้น</p>
             </div>
-            <div className="d-flex justify-content-between mt-2">
+            {/* <div className="d-flex justify-content-between mt-2">
               <p>เงื่อนไข</p>
               <p>เฉพาะในจังหวัดสงขลาเท่านั้น</p>
-            </div>
+            </div> */}
             <div className="text-center mt-3">
               <button className="btn btn-outline-primary me-2">
                 เพิ่มไปยังรถเข็น

@@ -21,10 +21,10 @@ function CategoryContainer() {
           productPic="burger.png"
           productName="อาหารและเครื่องดื่ม"
         />
-        <CategoryCard
+        {/* <CategoryCard
           productPic="flight.png"
           productName="การท่องเที่ยวและประสบการณ์ต่าง ๆ"
-        />
+        /> */}
         <CategoryCard
           productPic="clothes-rack.png"
           productName="เสื้อผ้าและสินค้าแฟชัน"

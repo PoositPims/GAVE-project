@@ -27,15 +27,15 @@ function SalesRegisContainer() {
             id="shopAddress"
             style={{ width: "400px" }}
           />
-          <input
+          {/* <input
             type="text"
             className="form-control mt-2"
             placeholder="ที่อยู่2"
             name="shopAddress2"
             id="shopAddress2"
             style={{ width: "400px" }}
-          />
-          <select
+          /> */}
+          {/* <select
             className="form-select form-select-sm mb-3 mt-2"
             style={{ width: "400px" }}
           >
@@ -46,8 +46,8 @@ function SalesRegisContainer() {
             <option value="4">การท่องเที่ยวและประสบการณ์ต่าง ๆ</option>
             <option value="5">เสื้อผ้าและสินค้าแฟชัน</option>
             <option value="6">สินค้าอิเล็กทรอนิกส์</option>
-          </select>
-          <div className="d-flex mt-2">
+          </select> */}
+          {/* <div className="d-flex mt-2">
             <input
               type="text"
               className="form-control"
@@ -65,7 +65,7 @@ function SalesRegisContainer() {
               id=""
               style={{ width: "200px" }}
             />
-          </div>
+          </div> */}
           <input
             type="text"
             className="form-control mt-2"

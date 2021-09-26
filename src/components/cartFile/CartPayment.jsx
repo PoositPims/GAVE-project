@@ -23,11 +23,8 @@ function CartPayment() {
           <p className="fw-bold">ค่าจัดส่ง</p>
           <p className="fw-bold">-</p>
         </div>
-        <div className="d-flex justify-content-between container mt-3">
-          <p className="fw-bold">ภาษี</p>
-          <p className="fw-bold">-</p>
-        </div>
-        <div className="d-flex justify-content-between container mt-3">
+
+        {/* <div className="d-flex justify-content-between container mt-3">
           <input
             type="text"
             className="form-control"
@@ -37,7 +34,7 @@ function CartPayment() {
           <button className="btn btn-warning" style={{ height: "30px" }}>
             Sent
           </button>
-        </div>
+        </div> */}
         <div className="d-flex justify-content-between container  mt-3">
           <p className="fw-bold">ยอดรวมทั้งสิ้น</p>
           <div>

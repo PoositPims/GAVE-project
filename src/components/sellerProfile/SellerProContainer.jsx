@@ -9,7 +9,7 @@ function SellerProContainer() {
     <div>
       <SellerInfo />
       <SellerRevenue />
-      <SellerMustdo />
+      {/* <SellerMustdo /> */}
       <SellerProducts />
     </div>
   );

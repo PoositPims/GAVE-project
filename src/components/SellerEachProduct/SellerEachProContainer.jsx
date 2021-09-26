@@ -43,7 +43,7 @@ function SellerEachProContainer() {
               </p>
             </div>
             <div className="d-flex justify-content-between mt-2">
-              <p className="fw-bold text-warning">คลัง</p>
+              <p className="fw-bold text-warning">มีสินค้าทั้งหมด</p>
               <p>100 ชิ้น</p>
               <p className="text-primary mb-0" style={{ marginTop: "10px" }}>
                 แก้ไข
@@ -52,20 +52,20 @@ function SellerEachProContainer() {
 
             {/*  */}
             {/*  */}
-            <div className="d-flex justify-content-between mt-2">
+            {/* <div className="d-flex justify-content-between mt-2">
               <p className="fw-bold text-warning">ดีล</p>
               <p>10 แพ๊ค น้ำดื่มตราคริสตัน 1.5 ล. แพ็ค 6 ขวด </p>
               <p className="text-primary mb-0" style={{ marginTop: "10px" }}>
                 แก้ไข
               </p>
-            </div>
-            <div className="d-flex justify-content-between mt-2">
+            </div> */}
+            {/* <div className="d-flex justify-content-between mt-2">
               <p className="fw-bold text-warning">สิ้นสุดดีล</p>
               <p>23/07/21</p>
               <p className="text-primary mb-0" style={{ marginTop: "10px" }}>
                 แก้ไข
               </p>
-            </div>
+            </div> */}
             <div className="d-flex justify-content-between mt-2">
               <p className="fw-bold text-warning">ขนาด</p>
               <p>1.5 ลิตร แพ๊ค 6 ขวด (จำนวน 10 ลิตร)</p>
@@ -75,19 +75,19 @@ function SellerEachProContainer() {
             </div>
             <div className="d-flex justify-content-between mt-2">
               <p className="fw-bold text-warning">การจัดส่ง</p>
-              <p>กระจายสินค้าผ่านตัวแทน ในวันที่ 25/07/21</p>
+              <p>Thailand Post</p>
               <p className="text-primary mb-0" style={{ marginTop: "10px" }}>
                 แก้ไข
               </p>
             </div>
 
-            <div className="d-flex justify-content-between mt-2">
+            {/* <div className="d-flex justify-content-between mt-2">
               <p className="fw-bold text-warning">เงื่อนไข</p>
               <p>เฉพาะในจังหวัดสงขลาเท่านั้น</p>
               <p className="text-primary mb-0" style={{ marginTop: "10px" }}>
                 แก้ไข
               </p>
-            </div>
+            </div> */}
             <div className="text-center mt-3">
               <button className="btn btn-outline-primary me-2">
                 ยืนยันแต่ยังไม่ขาย

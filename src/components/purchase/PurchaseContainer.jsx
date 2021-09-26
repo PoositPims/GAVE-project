@@ -13,8 +13,8 @@ function PurchaseContainer() {
         &gt;น้ำดื่มตราคริสตัล
       </p>
       <MainPurchase />
-      <SpecificPurInfo />
-      <DetailPur />
+      {/* <SpecificPurInfo /> */}
+      {/* <DetailPur /> */}
       <CustomerPurReview />
     </>
   );

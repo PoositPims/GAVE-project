@@ -17,7 +17,7 @@ function SellerRevenue() {
             </p>
           </div>
           {/*  */}
-          <div className="ms-5">
+          {/* <div className="ms-5">
             <p className="fw-bold fs-5">เงินที่โอนแล้วทั้งหมด</p>
             <div className="d-flex">
               <div>
@@ -42,12 +42,12 @@ function SellerRevenue() {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
-        <div className="d-flex justify-content-between mt-3">
+        {/* <div className="d-flex justify-content-between mt-3">
           <p className="ms-3">บัญชีธนาคารของฉัน: xxxx xxxx xxxx xxxx</p>
           <button className="btn btn-warning me-3 mb-2">โอนเงิน</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

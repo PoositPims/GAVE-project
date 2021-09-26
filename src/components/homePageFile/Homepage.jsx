@@ -12,9 +12,8 @@ function Homepage() {
     <div className="d-flex flex-column min-vh-100 ">
       <Header />
       <div className="pb-3 pt-3 bg-grey  ">
-        {/* <AdsCarousel /> */}
-        <CategoryContainer />
-        <WeeklyDealContainer />
+        {/* <CategoryContainer /> */}
+        {/* <WeeklyDealContainer /> */}
         <DailyDeal />
       </div>
 

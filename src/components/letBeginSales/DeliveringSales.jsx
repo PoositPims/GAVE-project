@@ -5,7 +5,7 @@ function DeliveringSales() {
   return (
     <div className="bg-white container-80 mb-3 pb-1">
       <h5>การจัดส่งสินค้า</h5>
-      <div className="form-check mb-3">
+      {/* <div className="form-check mb-3">
         <input
           className="form-check-input"
           type="radio"
@@ -19,8 +19,8 @@ function DeliveringSales() {
             *จะต้องส่งภายใน 5 วัน หลังจากที่สิ้นสุดดีล
           </span>
         </label>
-      </div>
-      <div className="form-check mb-3 ">
+      </div> */}
+      {/* <div className="form-check mb-3 ">
         <input
           className="form-check-input "
           type="radio"
@@ -82,6 +82,56 @@ function DeliveringSales() {
               </label>
             </div>
           </div>
+        </div>
+      </div> */}
+      <div className="border border-dark rounded ms-5">
+        <div className="form-check mb-3 mx-2 my-3">
+          <input
+            className="form-check-input"
+            type="radio"
+            value="ThailandPost"
+            name="deliProvider"
+            id="ThailandPost"
+          />
+          <label className="form-check-label" for="ThailandPost">
+            Thailand Post
+          </label>
+        </div>
+        <div className="form-check mb-3 mx-2 my-3">
+          <input
+            className="form-check-input"
+            type="radio"
+            value="FlashExpress"
+            name="deliProvider"
+            id="FlashExpress"
+          />
+          <label className="form-check-label" for="FlashExpress">
+            Flash Express
+          </label>
+        </div>
+        <div className="form-check mb-3 mx-2 my-3">
+          <input
+            className="form-check-input"
+            type="radio"
+            value="KerryExpress"
+            name="deliProvider"
+            id="KerryExpress"
+          />
+          <label className="form-check-label" for="KerryExpress">
+            Kerry Express
+          </label>
+        </div>
+        <div className="form-check mb-3 mx-2 my-3">
+          <input
+            className="form-check-input"
+            type="radio"
+            value="jandT"
+            name="deliProvider"
+            id="jandT"
+          />
+          <label className="form-check-label" for="jandT">
+            J & T Express
+          </label>
         </div>
       </div>
     </div>

@@ -16,6 +16,7 @@ import Cart from "./components/cartFile/Cart";
 import SaleRegister from "./components/SalerRegisterFile/SaleRegister";
 import SellerProfile from "./components/sellerProfile/SellerProfile";
 import SellerEachPeoduct from "./components/SellerEachProduct/SellerEachPeoduct";
+import Register from "./components/register/Register";
 import CategoryConsumer from "./components/Categories/consumerGoods/CategoryConsumer";
 import MainServiceCategories from "./components/Categories/servicesGoods/MainServiceCategories";
 import MainFoodCategories from "./components/Categories/FoodAndDrink.jsx/MainFoodCategories";
@@ -26,13 +27,18 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/login" component={Login} />
-        <Route
+        <Route path="/register" component={Register} />
+        {/* <Route
           path="/MainServiceCategories"
           component={MainServiceCategories}
-        />
-        <Route path="/categoryConsumer" component={CategoryConsumer} />
-        <Route path="/MainClothCategories" component={MainClothCategories} />
-        <Route path="/MainFoodCategories" component={MainFoodCategories} />
+        /> */}
+        {/* <Route path="/categoryConsumer" component={CategoryConsumer} /> */}
+        {/* <Route
+          path="/mainServiceCategories"
+          component={MainServiceCategories}
+        /> */}
+        {/* <Route path="/MainClothCategories" component={MainClothCategories} /> */}
+        {/* <Route path="/MainFoodCategories" component={MainFoodCategories} /> */}
         <Route path="/saleRegister" component={SaleRegister} />
         <Route path="/sellerEachPeoduct" component={SellerEachPeoduct} />
         <Route path="/sellerProfile" component={SellerProfile} />

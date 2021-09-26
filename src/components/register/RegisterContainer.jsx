@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import LoginList from "./LoginList";
+import RegisterList from "./RegisterList";
 import { isEmpty } from "../services/validateService";
 
-function LoginContainer() {
+function RegisterContainer() {
   // const [name, setName] = useState("");
   const [input, setInput] = useState({
     firstName: "",
@@ -55,57 +55,54 @@ function LoginContainer() {
     <>
       <div className="bg-primary">
         <p className="text-center text-white fs-4 mt-3">
-          เข้าสู่ระบบเพื่อดีลที่โดนใจ !
+          ลงทะเบียนและเป็นหนึ่งในครอบครัวของเรา
         </p>
-        <div
-          className="bg-white my-3 border rounded-3 container-60 border border-warning border-3"
-          style={{ height: "440px" }}
-        >
+        <div className="bg-white my-3 border rounded-3 container-60 border border-warning border-3">
           <div className="mt-3 col">
-            <LoginList
+            <RegisterList
               loginTitle="ชื่อจริง"
               onChange={handleInputChange}
               value={input.firstName}
               name="firstName"
               error={error}
             />
-            <LoginList
+            <RegisterList
               loginTitle="นามสกุล"
               onChange={handleInputChange}
               value={input.surName}
               name="surName"
               error={error}
             />
-            <LoginList
+            <RegisterList
               loginTitle="เบอร์โทรศัพท์"
               onChange={handleInputChange}
               value={input.phone}
               name="phone"
               error={error}
             />
-            <LoginList
+            <RegisterList
               loginTitle="อีเมล"
               onChange={handleInputChange}
               value={input.email}
               name="email"
               error={error}
             />
-            <LoginList
+            <RegisterList
               loginTitle="รหัสผ่าน"
               onChange={handleInputChange}
               value={input.password}
               name="password"
               error={error}
             />
-            {/* <LoginList
+            <RegisterList
               loginTitle="ยืนยันรหัสผ่าน"
               onChange={handleInputChange}
               value={input.confirmPass}
               name="confirmPass"
               error={error}
-            /> */}
+            />
           </div>
-          <div className="text-center">
+          <div className="text-center mb-3">
             <button
               type="button"
               className="btn btn-warning w-20 text-center  "
@@ -119,4 +116,4 @@ function LoginContainer() {
   );
 }
 
-export default LoginContainer;
+export default RegisterContainer;
