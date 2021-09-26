@@ -59,30 +59,30 @@ function LoginContainer() {
         </p>
         <div
           className="bg-white my-3 border rounded-3 container-60 border border-warning border-3"
-          style={{ height: "440px" }}
+          style={{ height: "430px" }}
         >
-          <div className="mt-3 col">
-            <LoginList
+          <div className="mt-5 col">
+            {/* <LoginList
               loginTitle="ชื่อจริง"
               onChange={handleInputChange}
               value={input.firstName}
               name="firstName"
               error={error}
-            />
-            <LoginList
+            /> */}
+            {/* <LoginList
               loginTitle="นามสกุล"
               onChange={handleInputChange}
               value={input.surName}
               name="surName"
               error={error}
-            />
-            <LoginList
+            /> */}
+            {/* <LoginList
               loginTitle="เบอร์โทรศัพท์"
               onChange={handleInputChange}
               value={input.phone}
               name="phone"
               error={error}
-            />
+            /> */}
             <LoginList
               loginTitle="อีเมล"
               onChange={handleInputChange}
@@ -110,7 +110,7 @@ function LoginContainer() {
               type="button"
               className="btn btn-warning w-20 text-center  "
             >
-              sent
+              เข้าสู่ระบบ
             </button>
           </div>
         </div>

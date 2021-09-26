@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function CartPayment() {
   return (
@@ -48,9 +49,11 @@ function CartPayment() {
           </div>
         </div>
         <div className="text-center">
-          <button className="btn btn-warning mt-3" type="submit">
-            ดำเนินการชำระเงิน
-          </button>
+          <NavLink to="/payment">
+            <button className="btn btn-warning mt-3" type="submit">
+              ดำเนินการชำระเงิน
+            </button>
+          </NavLink>
         </div>
       </div>
     </>

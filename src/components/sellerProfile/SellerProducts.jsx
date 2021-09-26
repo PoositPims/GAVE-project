@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function SellerProducts() {
   return (
@@ -21,9 +22,14 @@ function SellerProducts() {
           {/* <p className="fw-bold">สินค้า</p> */}
 
           <div className="ms-3">
-            <img src="bottle.jpg" alt="" style={{ width: "100px" }} />
-            <p className="mb-0">น้ำดื่มตราคริสตัน</p>
-            <p className="mb-0">ในคลัง : 100 แพค</p>
+            <NavLink
+              to="/sellerEachPeoduct"
+              className="text-decoration-none text-dark"
+            >
+              <img src="bottle.jpg" alt="" style={{ width: "100px" }} />
+              <p className="mb-0">น้ำดื่มตราคริสตัน</p>
+              <p className="mb-0">ในคลัง : 100 แพค</p>
+            </NavLink>
           </div>
         </div>
         {/*  */}
@@ -108,7 +114,9 @@ function SellerProducts() {
           </div>
         </div> */}
         <div className="text-end mt-3">
-          <button className="btn btn-primary me-3">ลงสินค้าเพิ่ม</button>
+          <NavLink to="/beginSales">
+            <button className="btn btn-primary me-3">ลงสินค้าเพิ่ม</button>
+          </NavLink>
         </div>
       </div>
     </>

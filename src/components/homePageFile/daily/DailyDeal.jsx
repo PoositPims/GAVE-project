@@ -1,5 +1,6 @@
 import React from "react";
 import DailyDealCard from "./DailyDealCard";
+import { NavLink, Link } from "react-router-dom";
 
 function DailyDeal() {
   return (
@@ -11,11 +12,13 @@ function DailyDeal() {
       </div>
 
       <div className=" d-flex justify-content-evenly bg-white mt-2 align-items-center  container ">
+        {/* <NavLink to="/purchase"> */}
         <DailyDealCard
           productPic="paris.jpg"
           productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
           productPrice="40,000"
         />
+        {/* </NavLink> */}
         <DailyDealCard
           productPic="paris.jpg"
           productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"

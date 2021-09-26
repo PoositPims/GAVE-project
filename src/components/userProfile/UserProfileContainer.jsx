@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import RegisterList from "./RegisterList";
+import UserProfileList from "./UserProfileList";
 import { isEmpty } from "../services/validateService";
+import { NavLink } from "react-router-dom";
 
-function RegisterContainer() {
+function UserProfileContainer() {
   // const [name, setName] = useState("");
   const [input, setInput] = useState({
     firstName: "",
@@ -55,60 +56,52 @@ function RegisterContainer() {
     <>
       <div className="bg-primary">
         <p className="text-center text-white fs-4 mt-3">
-          ลงทะเบียนและเป็นหนึ่งในครอบครัวของเรา
+          ยินดีต้อนรับเข้าสู่ GAVE
         </p>
         <div className="bg-white my-3 border rounded-3 container-60 border border-warning border-3">
           <div className="mt-3 col">
-            <RegisterList
-              registerTitle="ชื่อจริง"
+            <UserProfileList
+              userProfileTitle="ชื่อจริง"
               onChange={handleInputChange}
               value={input.firstName}
               name="firstName"
               error={error}
+              userInfoProfile="ปีเตอร์"
             />
-            <RegisterList
-              registerTitle="นามสกุล"
+            <UserProfileList
+              userProfileTitle="นามสกุล"
               onChange={handleInputChange}
               value={input.surName}
               name="surName"
               error={error}
+              userInfoProfile="แอมโบรสฟ"
             />
-            <RegisterList
-              registerTitle="เบอร์โทรศัพท์"
+            <UserProfileList
+              userProfileTitle="เบอร์โทรศัพท์"
               onChange={handleInputChange}
               value={input.phone}
               name="phone"
               error={error}
+              userInfoProfile="088-xxx-xxxx"
             />
-            <RegisterList
-              registerTitle="อีเมล"
+            <UserProfileList
+              userProfileTitle="อีเมล"
               onChange={handleInputChange}
               value={input.email}
               name="email"
               error={error}
-            />
-            <RegisterList
-              registerTitle="รหัสผ่าน"
-              onChange={handleInputChange}
-              value={input.password}
-              name="password"
-              error={error}
-            />
-            <RegisterList
-              registerTitle="ยืนยันรหัสผ่าน"
-              onChange={handleInputChange}
-              value={input.confirmPass}
-              name="confirmPass"
-              error={error}
+              userInfoProfile="peter@gmail.com"
             />
           </div>
           <div className="text-center mb-3">
-            <button
-              type="button"
-              className="btn btn-warning w-20 text-center  "
-            >
-              sent
-            </button>
+            <NavLink to="/">
+              <button
+                type="button"
+                className="btn btn-warning w-20 text-center  "
+              >
+                กลับสู่หน้าหลัก
+              </button>
+            </NavLink>
           </div>
         </div>
       </div>
@@ -116,4 +109,4 @@ function RegisterContainer() {
   );
 }
 
-export default RegisterContainer;
+export default UserProfileContainer;

@@ -66,7 +66,7 @@ function SalesRegisContainer() {
               style={{ width: "200px" }}
             />
           </div> */}
-          <input
+          {/* <input
             type="text"
             className="form-control mt-2"
             placeholder="อีเมล"
@@ -81,7 +81,7 @@ function SalesRegisContainer() {
             name="ownerTelephoneNumber"
             id="ownerTelephoneNumber"
             style={{ width: "400px" }}
-          />
+          /> */}
           <div className="text-center mt-2">
             <button className="btn btn-warning ">ลงทะเบียน</button>
           </div>

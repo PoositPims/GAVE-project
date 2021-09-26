@@ -1,6 +1,6 @@
 import React from "react";
 import SellerInfo from "./SellerInfo";
-import SellerMustdo from "./SellerMustdo";
+import DeliveryStatus from "./DeliveryStatus";
 import SellerProducts from "./SellerProducts";
 import SellerRevenue from "./SellerRevenue";
 
@@ -9,7 +9,7 @@ function SellerProContainer() {
     <div>
       <SellerInfo />
       <SellerRevenue />
-      {/* <SellerMustdo /> */}
+      <DeliveryStatus />
       <SellerProducts />
     </div>
   );

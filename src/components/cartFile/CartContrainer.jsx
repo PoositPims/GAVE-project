@@ -15,7 +15,7 @@ function CartContrainer() {
         <YourCart />
         <CartPayment />
       </div>
-      <RecomMoreCart />
+      {/* <RecomMoreCart /> */}
     </div>
   );
 }

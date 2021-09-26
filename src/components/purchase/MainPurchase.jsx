@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function MainPurchase() {
   return (
@@ -77,10 +78,14 @@ function MainPurchase() {
               <p>เฉพาะในจังหวัดสงขลาเท่านั้น</p>
             </div> */}
             <div className="text-center mt-3">
-              <button className="btn btn-outline-primary me-2">
-                เพิ่มไปยังรถเข็น
-              </button>
-              <button className="btn btn-warning">ซื้อสินค้า</button>
+              <NavLink to="/cart">
+                <button className="btn btn-outline-primary me-2">
+                  เพิ่มไปยังรถเข็น
+                </button>
+              </NavLink>
+              <NavLink to="/payment">
+                <button className="btn btn-warning">ซื้อสินค้า</button>
+              </NavLink>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function HeaderRegister() {
   return (
@@ -14,9 +15,13 @@ function HeaderRegister() {
             <div className="navbar-collapse justify-content-end me-2 ">
               <ul className="navbar-nav ">
                 <li className="nav-item me-1">
-                  <a className=" text-primary nav-link active fs-4" href="/">
+                  <NavLink
+                    to="/contactus"
+                    className=" text-primary nav-link active fs-4"
+                    href="/"
+                  >
                     ต้องการความช่วยเหลือ ?
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
             </div>

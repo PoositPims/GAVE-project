@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function SellerEachProContainer() {
   return (
@@ -92,7 +93,9 @@ function SellerEachProContainer() {
               <button className="btn btn-outline-primary me-2">
                 ยืนยันแต่ยังไม่ขาย
               </button>
-              <button className="btn btn-warning">ยืนยันและลงขาย</button>
+              <NavLink to="sellerProfile">
+                <button className="btn btn-warning">ยืนยันและลงขาย</button>
+              </NavLink>
             </div>
           </div>
         </div>

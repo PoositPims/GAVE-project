@@ -17,6 +17,7 @@ import SaleRegister from "./components/SalerRegisterFile/SaleRegister";
 import SellerProfile from "./components/sellerProfile/SellerProfile";
 import SellerEachPeoduct from "./components/SellerEachProduct/SellerEachPeoduct";
 import Register from "./components/register/Register";
+import UserProfile from "./components/userProfile/UserProfile";
 import CategoryConsumer from "./components/Categories/consumerGoods/CategoryConsumer";
 import MainServiceCategories from "./components/Categories/servicesGoods/MainServiceCategories";
 import MainFoodCategories from "./components/Categories/FoodAndDrink.jsx/MainFoodCategories";
@@ -28,6 +29,7 @@ function App() {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/userProfile" component={UserProfile} />
         {/* <Route
           path="/MainServiceCategories"
           component={MainServiceCategories}

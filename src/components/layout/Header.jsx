@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink, Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -14,25 +15,38 @@ function Header() {
 
           <div className="navbar-collapse justify-content-end me-2 ">
             <ul className="navbar-nav ">
-              <li className="nav-item me-1">
-                <a className=" text-white nav-link active fs-5" href="/">
+              <div className="nav-item me-1">
+                <NavLink
+                  to="/saleRegister"
+                  className=" text-white nav-link active fs-5"
+                  href="/"
+                >
                   ขายสินค้ากับ GAVE
-                </a>
-              </li>
+                </NavLink>
+              </div>
               <li className="nav-item me-1">
                 <a className=" text-white nav-link fs-5" href="/">
                   การแจ้งเตือน
                 </a>
               </li>
+
               <li className="nav-item me-1">
-                <a className=" text-white nav-link fs-5" href="/">
+                <NavLink
+                  to="/register"
+                  className=" text-white nav-link fs-5"
+                  href="/"
+                >
                   สมัครสมาชิก
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item me-1">
-                <a className=" text-white nav-link fs-5" href="/">
+                <NavLink
+                  to="/login"
+                  className=" text-white nav-link fs-5"
+                  href="/"
+                >
                   เข้าสู่ระบบ
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
