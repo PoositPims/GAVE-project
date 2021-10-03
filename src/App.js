@@ -6,6 +6,8 @@ import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import WeeklyDealContainer from "./components/WeeklyDealContainer";
 import Homepage from "./components/homePageFile/Homepage";
+import { user as initialUser } from "./components/services/localStorage";
+// import Login from "./components/pages/Login";
 import Login from "./components/LoginFile/Login";
 import BeginSales from "./components/letBeginSales/BeginSales";
 import Purchase from "./components/purchase/Purchase";
@@ -22,25 +24,16 @@ import CategoryConsumer from "./components/Categories/consumerGoods/CategoryCons
 import MainServiceCategories from "./components/Categories/servicesGoods/MainServiceCategories";
 import MainFoodCategories from "./components/Categories/FoodAndDrink.jsx/MainFoodCategories";
 import MainClothCategories from "./components/Categories/Cloth/MainClothCategories";
+import { useState } from "react";
 
 function App() {
+  const [user, setUser] = useState(initialUser);
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/login" component={Login} />
+        <Route path="/login" component={Login} setUser={setUser} />
         <Route path="/register" component={Register} />
         <Route path="/userProfile" component={UserProfile} />
-        {/* <Route
-          path="/MainServiceCategories"
-          component={MainServiceCategories}
-        /> */}
-        {/* <Route path="/categoryConsumer" component={CategoryConsumer} /> */}
-        {/* <Route
-          path="/mainServiceCategories"
-          component={MainServiceCategories}
-        /> */}
-        {/* <Route path="/MainClothCategories" component={MainClothCategories} /> */}
-        {/* <Route path="/MainFoodCategories" component={MainFoodCategories} /> */}
         <Route path="/saleRegister" component={SaleRegister} />
         <Route path="/sellerEachPeoduct" component={SellerEachPeoduct} />
         <Route path="/sellerProfile" component={SellerProfile} />
@@ -56,3 +49,44 @@ function App() {
 }
 
 export default App;
+
+{
+  /* {user.role ? ( // ถ้า user ฒีค่าแสดงว่า login แล้ว ถึงเข้าถึงหน้า Home ได้
+          // role user
+            <>
+              <Route exact path="/" component={Home} />
+              <Redirect to="/" />{" "}
+            </>
+          ) : user.role === 'guest ? (
+             // role guest
+            <>
+              <Route path="/login" component={Login} />
+         
+              <Route path="/register" component={Register} />
+            
+              <Redirect to="/login" />
+            </>
+          ): user.role === 'customer'} */
+}
+// ....................................................
+{
+  /* <Route
+          path="/MainServiceCategories"
+          component={MainServiceCategories}
+        /> */
+}
+{
+  /* <Route path="/categoryConsumer" component={CategoryConsumer} /> */
+}
+{
+  /* <Route
+          path="/mainServiceCategories"
+          component={MainServiceCategories}
+        /> */
+}
+{
+  /* <Route path="/MainClothCategories" component={MainClothCategories} /> */
+}
+{
+  /* <Route path="/MainFoodCategories" component={MainFoodCategories} /> */
+}

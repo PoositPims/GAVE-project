@@ -1,24 +1,39 @@
 import React, { useState } from "react";
 import RegisterList from "./RegisterList";
 import { isEmpty } from "../services/validateService";
+// import axios from "axios";
+import axios from "../../config/axios";
+import { useHistory } from "react-router-dom";
 
 function RegisterContainer() {
+  const history = useHistory();
   // const [name, setName] = useState("");
   const [input, setInput] = useState({
+    // firstName: "",
+    // surName: "",
+    // phone: "",
+    // email: "",
+    // password: "",
+    // confirmPass: "",
+
     firstName: "",
-    surName: "",
-    phone: "",
+    lastName: "",
+    username: "",
     email: "",
+    telephone: "",
     password: "",
-    confirmPass: "",
+    address1: "",
+    address2: "",
   });
   const [error, setError] = useState({
     firstName: "",
-    surName: "",
-    phone: "",
+    lastName: "",
+    username: "",
     email: "",
+    telephone: "",
     password: "",
-    confirmPass: "",
+    address1: "",
+    address2: "",
   });
 
   const validateName = (value) => {
@@ -51,6 +66,48 @@ function RegisterContainer() {
     setInput((current) => ({ ...current, [e.target.name]: e.target.value }));
   };
   // อ้างถึง key ที่เป็น object
+
+  const handleSubmitRegister = (e) => {
+    e.preventDefault();
+    axios
+      // /users/register
+      .post("/users/register", {
+        // username: input.username,
+        // password: input.password,
+        // email: input.email,
+        // confirmPassword: input.confirmPassword,
+
+        firstName: input.firstName,
+        lastName: input.lastName,
+        username: input.username,
+        email: input.email,
+        telephone: input.telephone,
+        password: input.password,
+        address1: input.address1,
+        address2: "",
+      })
+
+      .then(() => {
+        // history.push("/");
+        history.push({
+          pathname: "/login",
+          state: {
+            successMessage:
+              "your account has been created. Please login to continue",
+          },
+        });
+      })
+      .catch((err) => {
+        console.dir(err);
+        if (err.response && err.response.status === 400)
+          if (
+            err.message ===
+            "Validation error: Validation isEmail on email failed"
+          ) {
+            setError(err.resposne.data.message);
+          }
+      });
+  };
   return (
     <>
       <div className="bg-primary">
@@ -58,58 +115,74 @@ function RegisterContainer() {
           ลงทะเบียนและเป็นหนึ่งในครอบครัวของเรา
         </p>
         <div className="bg-white my-3 border rounded-3 container-60 border border-warning border-3">
-          <div className="mt-3 col">
-            <RegisterList
-              registerTitle="ชื่อจริง"
-              onChange={handleInputChange}
-              value={input.firstName}
-              name="firstName"
-              error={error}
-            />
-            <RegisterList
-              registerTitle="นามสกุล"
-              onChange={handleInputChange}
-              value={input.surName}
-              name="surName"
-              error={error}
-            />
-            <RegisterList
-              registerTitle="เบอร์โทรศัพท์"
-              onChange={handleInputChange}
-              value={input.phone}
-              name="phone"
-              error={error}
-            />
-            <RegisterList
-              registerTitle="อีเมล"
-              onChange={handleInputChange}
-              value={input.email}
-              name="email"
-              error={error}
-            />
-            <RegisterList
-              registerTitle="รหัสผ่าน"
-              onChange={handleInputChange}
-              value={input.password}
-              name="password"
-              error={error}
-            />
-            <RegisterList
-              registerTitle="ยืนยันรหัสผ่าน"
-              onChange={handleInputChange}
-              value={input.confirmPass}
-              name="confirmPass"
-              error={error}
-            />
-          </div>
-          <div className="text-center mb-3">
-            <button
-              type="button"
-              className="btn btn-warning w-20 text-center  "
-            >
-              sent
-            </button>
-          </div>
+          <form onSubmit={handleSubmitRegister}>
+            <div className="mt-3 col">
+              <RegisterList
+                registerTitle="ชื่อจริง"
+                onChange={handleInputChange}
+                value={input.firstName}
+                name="firstName"
+                error={error}
+                type="text"
+              />
+              <RegisterList
+                registerTitle="นามสกุล"
+                onChange={handleInputChange}
+                value={input.lastName}
+                name="lastName"
+                error={error}
+                type="text"
+              />
+              <RegisterList
+                registerTitle="เบอร์โทรศัพท์"
+                onChange={handleInputChange}
+                value={input.telephone}
+                name="telephone"
+                error={error}
+                type="text"
+              />
+              <RegisterList
+                registerTitle="อีเมล"
+                onChange={handleInputChange}
+                value={input.email}
+                name="email"
+                error={error}
+                type="text"
+              />
+              <RegisterList
+                registerTitle="ชื่อผู้ใช้"
+                onChange={handleInputChange}
+                value={input.username}
+                name="username"
+                error={error}
+                type="text"
+              />
+              <RegisterList
+                registerTitle="รหัสผ่าน"
+                onChange={handleInputChange}
+                value={input.password}
+                name="password"
+                error={error}
+                type="password"
+              />
+              <RegisterList
+                registerTitle="ยืนยันรหัสผ่าน"
+                onChange={handleInputChange}
+                value={input.confirmPass}
+                name="confirmPass"
+                error={error}
+                type="password"
+              />
+            </div>
+            <div className="text-center mb-3">
+              <button
+                type="submit"
+                className="btn btn-warning w-20 text-center  "
+              >
+                sent
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </>

@@ -6,6 +6,7 @@ function RegisterList({
   name,
   input,
   error,
+  type,
   handleInputChange,
 }) {
   return (
@@ -13,7 +14,7 @@ function RegisterList({
       <div className="my-3">
         <p className="mb-0 fs-5">{registerTitle} :</p>
         <input
-          type="text"
+          type={type}
           // className="form-control "
           className={`form-control${error[name] ? " is-invalid" : ""}`}
           onChange={onChange}

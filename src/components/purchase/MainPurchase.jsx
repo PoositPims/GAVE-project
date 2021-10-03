@@ -13,7 +13,7 @@ function MainPurchase() {
             <img src="bottle2.jpg" alt="" width="100px" height="100px" />
           </div>
           <p className="mt-2">มีสินค้าทั้งหมด 100 ชิ้น</p>
-          <div className="d-flex">
+          <div className="d-flex ">
             <p className="me-3">แชร์ดีล :</p>
             <a target="_blank" href="https://www.facebook.com" className="me-2">
               <img src="facebook.png" alt="" width="25px" />

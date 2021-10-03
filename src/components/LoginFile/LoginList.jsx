@@ -6,6 +6,8 @@ function LoginList({
   name,
   input,
   error,
+  value,
+  type,
   handleInputChange,
 }) {
   console.log(error[name]);
@@ -14,7 +16,7 @@ function LoginList({
       <div className="my-3">
         <p className="mb-0 fs-5">{loginTitle} :</p>
         <input
-          type="text"
+          type={type}
           // className="form-control "
           className={`form-control${error[name] ? " is-invalid" : ""}`}
           onChange={onChange}

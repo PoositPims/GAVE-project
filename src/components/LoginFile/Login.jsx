@@ -4,11 +4,11 @@ import Header2 from "../layout/Header2";
 import Footer from "../layout/Footer";
 import LoginContainer from "./LoginContainer";
 
-function Login() {
+function Login({ setUser }) {
   return (
     <div className="d-flex flex-column min-vh-100">
       <Header2 />
-      <LoginContainer />
+      <LoginContainer setUser={setUser} />
       <Footer />
     </div>
   );
