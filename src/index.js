@@ -3,11 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import Login from "./components/LoginFile/Login";
+import { AuthContextProvider } from "./contexts/AuthContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    {/* <Login /> */}
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

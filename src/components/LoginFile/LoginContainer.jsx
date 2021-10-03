@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import LoginList from "./LoginList";
 import { isEmpty } from "../services/validateService";
 import axios from "../../config/axios";
@@ -6,12 +6,13 @@ import axios from "../../config/axios";
 import jwtDecode from "jwt-decode";
 import { setToken, user } from "../services/localStorage";
 import { useHistory } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
-function LoginContainer({ setUser }) {
+function LoginContainer() {
   const history = useHistory();
   // const [name, setName] = useState("");
   // const [username, setUsername] = useState("");
-
+  const { setUser } = useContext(AuthContext);
   const [input, setInput] = useState({
     // firstName: "",
     // surName: "",

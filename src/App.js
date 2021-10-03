@@ -24,14 +24,16 @@ import CategoryConsumer from "./components/Categories/consumerGoods/CategoryCons
 import MainServiceCategories from "./components/Categories/servicesGoods/MainServiceCategories";
 import MainFoodCategories from "./components/Categories/FoodAndDrink.jsx/MainFoodCategories";
 import MainClothCategories from "./components/Categories/Cloth/MainClothCategories";
-import { useState } from "react";
+import { createContext, useState, useContext } from "react";
+import { AuthContext } from "./contexts/AuthContext";
 
 function App() {
-  const [user, setUser] = useState(initialUser);
+  const { user, setUser } = useContext(AuthContext);
+
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/login" component={Login} setUser={setUser} />
+        <Route path="/login" component={Login} setUser={setUser} user={user} />
         <Route path="/register" component={Register} />
         <Route path="/userProfile" component={UserProfile} />
         <Route path="/saleRegister" component={SaleRegister} />
