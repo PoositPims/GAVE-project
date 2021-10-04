@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import axios from "../../config/axios";
+import { useHistory } from "react-router-dom";
+import { setToken } from "../services/localStorage";
+import jwtDecode from "jwt-decode";
+import { AuthContext } from "../../contexts/AuthContext";
+
 
 function SalesRegisContainer() {
+  const history = useHistory();
+  const { setUser } = useContext(AuthContext);
+  
+
   const [input, setInput] = useState({
     firstName: "",
     lastName: "",
     shopName: "",
-    userName: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -17,7 +26,7 @@ function SalesRegisContainer() {
     firstName: "",
     lastName: "",
     shopName: "",
-    userName: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -31,13 +40,13 @@ function SalesRegisContainer() {
         firstName: input.firstName,
         lastName: input.lastName,
         shopName: input.shopName,
-        userName: input.userName,
+        username: input.username,
         email: input.email,
         password: input.password,
         confirmPassword: input.confirmPassword,
         shopAddress: input.shopAddress,
       });
-      console.log(res);
+      history.push("/salesLogin");
     } catch (err) {
       console.dir(err);
       if (err.response && err.response.status === 400)
@@ -105,8 +114,8 @@ function SalesRegisContainer() {
               className="form-control mt-2 "
               onChange={handleInputChange}
               placeholder="ชื่อผู้ใช้ร้านค้า"
-              name="userName"
-              id="userName"
+              name="username"
+              id="username"
               style={{ width: "400px" }}
             />
             <input

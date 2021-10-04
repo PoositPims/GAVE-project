@@ -1,18 +1,17 @@
-import React from "react";
+import React from 'react'
 
-function LoginList({
-  loginTitle,
-  onChange,
-  name,
-  input,
-  error,
-  value,
-  type,
-  handleInputChange,
-}) {
-  
-  return (
-    <div>
+function SalesLoginList({
+    loginTitle,
+    onChange,
+    name,
+    input,
+    error,
+    value,
+    type,
+    handleInputChange,
+  }) {
+    return (
+        <div>
       <div className="my-3">
         <p className="mb-0 fs-5">{loginTitle} :</p>
         <input
@@ -25,7 +24,7 @@ function LoginList({
         />
       </div>
     </div>
-  );
+    )
 }
 
-export default LoginList;
+export default SalesLoginList

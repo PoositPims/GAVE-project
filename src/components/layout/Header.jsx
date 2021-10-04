@@ -21,7 +21,16 @@ function Header() {
                   className=" text-white nav-link active fs-5"
                   href="/"
                 >
-                  ขายสินค้ากับ GAVE
+                  ลงทะเบียนผู้ขาย
+                </NavLink>
+              </div>
+              <div className="nav-item me-1">
+                <NavLink
+                  to="/salesLogin"
+                  className=" text-white nav-link active fs-5"
+                  href="/"
+                >
+                  เข้าสู่ระบบผู้ขาย
                 </NavLink>
               </div>
               <li className="nav-item me-1">

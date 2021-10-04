@@ -20,10 +20,11 @@ import SellerProfile from "./components/sellerProfile/SellerProfile";
 import SellerEachPeoduct from "./components/SellerEachProduct/SellerEachPeoduct";
 import Register from "./components/register/Register";
 import UserProfile from "./components/userProfile/UserProfile";
-import CategoryConsumer from "./components/Categories/consumerGoods/CategoryConsumer";
-import MainServiceCategories from "./components/Categories/servicesGoods/MainServiceCategories";
-import MainFoodCategories from "./components/Categories/FoodAndDrink.jsx/MainFoodCategories";
-import MainClothCategories from "./components/Categories/Cloth/MainClothCategories";
+import SalesLogin from "./components/salerLogin/SalesLogin";
+// import CategoryConsumer from "./components/Categories/consumerGoods/CategoryConsumer";
+// import MainServiceCategories from "./components/Categories/servicesGoods/MainServiceCategories";
+// import MainFoodCategories from "./components/Categories/FoodAndDrink.jsx/MainFoodCategories";
+// import MainClothCategories from "./components/Categories/Cloth/MainClothCategories";
 import { createContext, useState, useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
 
@@ -33,7 +34,8 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/login" component={Login} setUser={setUser} user={user} />
+        <Route path="/login" component={Login} s/>
+        <Route path="/salesLogin" component={SalesLogin}/>
         <Route path="/register" component={Register} />
         <Route path="/userProfile" component={UserProfile} />
         <Route path="/saleRegister" component={SaleRegister} />

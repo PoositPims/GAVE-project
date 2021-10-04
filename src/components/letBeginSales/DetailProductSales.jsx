@@ -1,6 +1,32 @@
 import React from "react";
+import { isEmpty } from "../services/validateService";
 
-function DetailProductSales() {
+function DetailProductSales({input,setInput,error,setError}) {
+
+  const validateName = (value) => {
+    if (isEmpty(value)) {
+      return "Name is required";
+    }
+    return "";
+  };
+
+  const handleInputChange = e => {
+    if (e.target.value === "") {
+      // setError("กรุณากรอกข้อมูล");
+      setError((curErr) => ({
+        ...curErr,
+        value: validateName(e.target.value),
+        // ผิดตรง value
+      }));
+      // ............................แก้บรรทัดนี้................................
+    } else {
+      setError("");
+    }
+    // console.log(e.target.value);
+    // console.log(e.target.name);
+    setInput((current) => ({ ...current, [e.target.name]: e.target.value }));
+  }
+
   return (
     <>
       <div className="bg-white container-80 ">
@@ -16,11 +42,14 @@ function DetailProductSales() {
                   type="text"
                   className="form-control"
                   style={{ width: "350px" }}
+                  onChange={handleInputChange}
+                  value={input.productSize}
+                  name='productSize'
                 />
               </div>
             </div>
 
-            <div className="d-flex mt-3 container row">
+            {/* <div className="d-flex mt-3 container row">
               <div className="col-2">
                 <p>การจัดส่ง</p>
               </div>
@@ -29,9 +58,12 @@ function DetailProductSales() {
                   type="text"
                   className="form-control"
                   style={{ width: "350px" }}
+                  onChange={handleInputChange}
+                  value={input.delivery}
+                  name='delivery'
                 />
               </div>
-            </div>
+            </div> */}
 
             <div className="d-flex mt-3 container row">
               <div className="col-2">
@@ -42,11 +74,14 @@ function DetailProductSales() {
                   type="text"
                   className="form-control"
                   style={{ width: "350px" }}
+                  onChange={handleInputChange}
+                  value={input.amount}
+                  name='amount'
                 />
               </div>
             </div>
 
-            <div className="d-flex mt-3 container row">
+            {/* <div className="d-flex mt-3 container row">
               <div className="col-2">
                 <p>รายละเอียดอื่น ๆ</p>
               </div>
@@ -57,9 +92,11 @@ function DetailProductSales() {
                   name=""
                   placeholder="0/5000"
                   style={{ width: "600px", height: "200px" }}
+                  onChange={handleInputChange}
+                  value={input}
                 />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

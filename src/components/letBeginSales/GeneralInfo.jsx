@@ -1,6 +1,32 @@
 import React from "react";
+import { isEmpty } from "../services/validateService";
 
-function GeneralInfo() {
+function GeneralInfo({input,setInput,error,setError}) {
+
+  const validateName = ({value}) => {
+    if (isEmpty(value)) {
+      return "Name is required";
+    }
+    return "";
+  };
+
+  const handleInputChange = e => {
+    if (e.target.value === "") {
+      // setError("กรุณากรอกข้อมูล");
+      setError((curErr) => ({
+        ...curErr,
+        value: validateName(e.target.value),
+        // ผิดตรง value
+      }));
+      // ............................แก้บรรทัดนี้................................
+    } else {
+      setError("");
+    }
+    // console.log(e.target.value);
+    // console.log(e.target.name);
+    setInput((current) => ({ ...current, [e.target.name]: e.target.value }));
+  }
+
   return (
     <div>
       <div className="bg-white container-80 ">
@@ -14,7 +40,9 @@ function GeneralInfo() {
             <input
               className="form-control"
               type="text"
-              name=""
+              name="productName"
+              value={input.productName}
+              onChange={handleInputChange}
               placeholder="0/120"
               style={{ width: "700px" }}
             />
@@ -29,9 +57,11 @@ function GeneralInfo() {
             <input
               className="form-control "
               type="text"
-              name=""
+              name="price"
               placeholder="ราคา (บาท)"
               style={{ width: "150px" }}
+              value={input.price}
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -43,9 +73,11 @@ function GeneralInfo() {
             <input
               className="form-control"
               type="text"
-              name=""
+              name="discount"
               placeholder="ส่วนลด (บาท)"
               style={{ width: "150px" }}
+              value={input.discount}
+              onChange={handleInputChange}
             />
           </div>
         </div>

@@ -10,9 +10,12 @@ const AuthContext = createContext();
 //..............................ย้ายไป localStorage
 function AuthContextProvider({ children }) {
   const [user, setUser] = useState(initialUser);
+
   // check ว่ามี token ไหม ถ้ามีก็ jwt_decode(token) ถ้าไม่ก็ {}
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser
+    // ,salesInfo.firstName,lastName,shopName,userName,email,password, shopAddress,revenue 
+    }}>
       {children}
     </AuthContext.Provider>
   );

@@ -2,13 +2,13 @@ import React, { useState, useContext } from "react";
 import LoginList from "./LoginList";
 import { isEmpty } from "../services/validateService";
 import axios from "../../config/axios";
-// import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { setToken, user } from "../services/localStorage";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
 function LoginContainer() {
+  
   const history = useHistory();
   // const [name, setName] = useState("");
   // const [username, setUsername] = useState("");
@@ -95,34 +95,6 @@ function LoginContainer() {
         >
           <form onSubmit={handleSubmitLogin}>
             <div className="mt-5 col">
-              {/* <LoginList
-              loginTitle="ชื่อจริง"
-              onChange={handleInputChange}
-              value={input.firstName}
-              name="firstName"
-              error={error}
-            /> */}
-              {/* <LoginList
-              loginTitle="นามสกุล"
-              onChange={handleInputChange}
-              value={input.surName}
-              name="surName"
-              error={error}
-            /> */}
-              {/* <LoginList
-              loginTitle="เบอร์โทรศัพท์"
-              onChange={handleInputChange}
-              value={input.phone}
-              name="phone"
-              error={error}
-            /> */}
-              {/* <LoginList
-              loginTitle="อีเมล"
-              onChange={handleInputChange}
-              value={input.email}
-              name="email"
-              error={error}
-            /> */}
               <LoginList
                 loginTitle="ชื่อผู้ใช้"
                 onChange={handleInputChange}
@@ -139,13 +111,6 @@ function LoginContainer() {
                 error={error}
                 type="password"
               />
-              {/* <LoginList
-              loginTitle="ยืนยันรหัสผ่าน"
-              onChange={handleInputChange}
-              value={input.confirmPass}
-              name="confirmPass"
-              error={error}
-            /> */}
             </div>
             <div className="text-center">
               <button

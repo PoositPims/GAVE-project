@@ -1,6 +1,6 @@
 import React from "react";
 
-function SellerInfo() {
+function SellerInfo({fetchSalesInfo}) {
   return (
     <>
       <div className="bg-white container px-0 mt-3">
