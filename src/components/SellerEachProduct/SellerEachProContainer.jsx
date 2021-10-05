@@ -1,7 +1,29 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState,useContext} from "react";
+import { NavLink,useLocation } from "react-router-dom";
+import axios from "../../config/axios";
+import { AuthContext } from "../../contexts/AuthContext";
+
 
 function SellerEachProContainer() {
+  const { user } = useContext(AuthContext);
+  const location = useLocation()
+  const [salesProduct,setSalesProduct] = useState({
+    productName:''
+  })
+
+  useEffect(()=>{
+    const fetchSalesProduct = async() =>{
+      try{
+const res = await axios.get(`/products/${location.state.product.id}`)
+setSalesProduct(res.data.product)
+console.log(res)
+      }catch(err){
+        console.log(err)
+      }
+    }
+    fetchSalesProduct()
+  },[])
+
   return (
     <>
       <h3 className="fw-bold text-primary" style={{ marginLeft: "100px" }}>
@@ -10,7 +32,8 @@ function SellerEachProContainer() {
       <div className=" d-flex bg-white container-80 justify-content-between ">
         <div className=" border-end border-3 border-grey">
           <h5 className="fw-bold mt-2">
-            น้ำดื่มตราคริสตัน 1.5 ล. แพ็ค 6 ขวด ราคาพิเศษ
+            {/* น้ำดื่มตราคริสตัน 1.5 ล. แพ็ค 6 ขวด ราคาพิเศษ */}
+            {salesProduct.productName}
           </h5>
           <div className="text-end">
             <p className="text-primary mb-0 me-2">แก้ไขชื่อ</p>
@@ -31,7 +54,10 @@ function SellerEachProContainer() {
           <div className="mt-3">
             <div className="d-flex justify-content-between mt-2">
               <p className="fw-bold text-warning">ราคา</p>
-              <p>600 บาท</p>
+              <p>
+                600 
+                <span>{}</span>
+                บาท</p>
               <p className="text-primary mb-0" style={{ marginTop: "10px" }}>
                 แก้ไข
               </p>
@@ -50,23 +76,6 @@ function SellerEachProContainer() {
                 แก้ไข
               </p>
             </div>
-
-            {/*  */}
-            {/*  */}
-            {/* <div className="d-flex justify-content-between mt-2">
-              <p className="fw-bold text-warning">ดีล</p>
-              <p>10 แพ๊ค น้ำดื่มตราคริสตัน 1.5 ล. แพ็ค 6 ขวด </p>
-              <p className="text-primary mb-0" style={{ marginTop: "10px" }}>
-                แก้ไข
-              </p>
-            </div> */}
-            {/* <div className="d-flex justify-content-between mt-2">
-              <p className="fw-bold text-warning">สิ้นสุดดีล</p>
-              <p>23/07/21</p>
-              <p className="text-primary mb-0" style={{ marginTop: "10px" }}>
-                แก้ไข
-              </p>
-            </div> */}
             <div className="d-flex justify-content-between mt-2">
               <p className="fw-bold text-warning">ขนาด</p>
               <p>1.5 ลิตร แพ๊ค 6 ขวด (จำนวน 10 ลิตร)</p>
@@ -81,14 +90,6 @@ function SellerEachProContainer() {
                 แก้ไข
               </p>
             </div>
-
-            {/* <div className="d-flex justify-content-between mt-2">
-              <p className="fw-bold text-warning">เงื่อนไข</p>
-              <p>เฉพาะในจังหวัดสงขลาเท่านั้น</p>
-              <p className="text-primary mb-0" style={{ marginTop: "10px" }}>
-                แก้ไข
-              </p>
-            </div> */}
             <div className="text-center mt-3">
               <button className="btn btn-outline-primary me-2">
                 ยืนยันแต่ยังไม่ขาย

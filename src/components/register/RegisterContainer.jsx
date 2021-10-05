@@ -9,13 +9,6 @@ function RegisterContainer() {
   const history = useHistory();
   // const [name, setName] = useState("");
   const [input, setInput] = useState({
-    // firstName: "",
-    // surName: "",
-    // phone: "",
-    // email: "",
-    // password: "",
-    // confirmPass: "",
-
     firstName: "",
     lastName: "",
     username: "",
@@ -84,6 +77,7 @@ function RegisterContainer() {
         password: input.password,
         address1: input.address1,
         address2: "",
+    
       })
 
       .then(() => {

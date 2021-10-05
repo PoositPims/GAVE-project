@@ -36,8 +36,8 @@ function DeliveringSales({input,setInput,error,setError}) {
           <input
             className="form-check-input"
             type="radio"
-            value={input.ThailandPost}
-            name="deliProvider"
+            value="ThailandPost"
+            name="delivery"
             id="ThailandPost"
             onChange={handleInputChange}
           />
@@ -49,8 +49,8 @@ function DeliveringSales({input,setInput,error,setError}) {
           <input
             className="form-check-input"
             type="radio"
-            value={input.FlashExpress}
-            name="deliProvider"
+            value="FlashExpress"
+            name="delivery"
             id="FlashExpress"
             onChange={handleInputChange}
           />
@@ -62,8 +62,8 @@ function DeliveringSales({input,setInput,error,setError}) {
           <input
             className="form-check-input"
             type="radio"
-            value={input.KerryExpress}
-            name="deliProvider"
+            value="KerryExpress"
+            name="delivery"
             id="KerryExpress"
             onChange={handleInputChange}
           />
@@ -75,8 +75,8 @@ function DeliveringSales({input,setInput,error,setError}) {
           <input
             className="form-check-input"
             type="radio"
-            value={input.JandTExpress}
-            name="deliProvider"
+            value="JandTExpress"
+            name="delivery"
             id="jandT" 
             onChange={handleInputChange}
           />

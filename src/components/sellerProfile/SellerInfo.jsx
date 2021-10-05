@@ -1,6 +1,8 @@
 import React from "react";
 
-function SellerInfo({fetchSalesInfo}) {
+function SellerInfo(
+  {salesInfo:{shopName,shopAddress,created_at,firstName,lastName}}
+  ) {
   return (
     <>
       <div className="bg-white container px-0 mt-3">
@@ -13,8 +15,8 @@ function SellerInfo({fetchSalesInfo}) {
               className="text-center"
             />
             <p>
-              <span className="fw-bold text-primary">ชื่อร้าน: </span>
-              สงขลาค้าส่ง{" "}
+              <span className="fw-bold text-primary">ชื่อร้าน : </span>
+              {shopName}
             </p>
           </div>
           <div className="col " style={{ marginTop: "20px" }}>
@@ -22,15 +24,16 @@ function SellerInfo({fetchSalesInfo}) {
               <span className="fw-bold text-primary">
                 เปิดร้านเมื่อวันที่ :
               </span>
-              {` 01-01-2020`}
+              {/* {` 01-01-2020`} */}
+              {created_at}
             </p>
             <p>
-              <span className="fw-bold text-primary">ที่อยู่ร้าน :</span>
-              {` ถ. สามชัย อ.หาดใหญ่ จ.สงขลา`}
+              <span className="fw-bold text-primary">ที่อยู่ร้าน : </span>
+              {shopAddress}
             </p>
             <p>
               <span className="fw-bold text-primary">ชื่อเจ้าของร้าน :</span>
-              {` นายหัว `}
+              {firstName} {lastName}
             </p>
           </div>
         </div>

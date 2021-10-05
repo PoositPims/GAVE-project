@@ -22,8 +22,6 @@ function GeneralInfo({input,setInput,error,setError}) {
     } else {
       setError("");
     }
-    // console.log(e.target.value);
-    // console.log(e.target.name);
     setInput((current) => ({ ...current, [e.target.name]: e.target.value }));
   }
 

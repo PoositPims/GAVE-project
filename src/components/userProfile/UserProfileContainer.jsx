@@ -1,56 +1,57 @@
-import React, { useState } from "react";
+import React, { useState,useEffect,useContext } from "react";
 import UserProfileList from "./UserProfileList";
 import { isEmpty } from "../services/validateService";
 import { NavLink } from "react-router-dom";
+import axios from "../../config/axios";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function UserProfileContainer() {
   // const [name, setName] = useState("");
-  const [input, setInput] = useState({
+  const { user } = useContext(AuthContext);
+  const [usersInfos, setUsersInfos] = useState({
     firstName: "",
-    surName: "",
-    phone: "",
-    email: "",
-    password: "",
-    confirmPass: "",
-  });
+    lastName: "",
+    telephone: "",
+    email: ""
+  })
+  
   const [error, setError] = useState({
     firstName: "",
-    surName: "",
+    lastName: "",
     phone: "",
-    email: "",
-    password: "",
-    confirmPass: "",
+    email: ""
   });
 
-  const validateName = (value) => {
-    if (isEmpty(value)) {
-      //{payee: 'payee is require', amount:""Amount must be numeriv}
-      // วิธีที่ 1
-      // const newError = { ...Error };
-      // newError.payee = "Payee is required";
-      // setError(newError);
-      // วิธีที่ 2
-      // setError((curErr) => ({ ...curErr, payee: "Payee is required" })); //งง // เพิ่มค่า key value เขาไปใน Object ตัวนั้น
-      return "Name is required";
+  useEffect(()=>{
+    const fetchUserInfo = async() =>{
+      try{
+        const res = await axios.get(`/users/${user.id}`)
+        setUsersInfos(res.data.user)
+        console.log(res)
+      }catch(err){
+        console.log(err)
+      }
     }
-    return "";
-  };
+    fetchUserInfo()
+  },[])
 
-  const handleInputChange = (e) => {
-    if (e.target.value === "") {
-      // setError("กรุณากรอกข้อมูล");
-      setError((curErr) => ({
-        ...curErr,
-        value: validateName(e.target.value),
-      }));
-      // ............................แก้บรรทัดนี้................................
-    } else {
-      setError("");
-    }
-    console.log(e.target.value);
-    console.log(e.target.name);
-    setInput((current) => ({ ...current, [e.target.name]: e.target.value }));
-  };
+  
+
+  // const handleInputChange = (e) => {
+  //   if (e.target.value === "") {
+  //     // setError("กรุณากรอกข้อมูล");
+  //     setError((curErr) => ({
+  //       ...curErr,
+  //       value: validateName(e.target.value),
+  //     }));
+  //     // ............................แก้บรรทัดนี้................................
+  //   } else {
+  //     setError("");
+  //   }
+  //   // console.log(e.target.value);
+  //   // console.log(e.target.name);
+  //   setInput((current) => ({ ...current, [e.target.name]: e.target.value }));
+  // };
   // อ้างถึง key ที่เป็น object
   return (
     <>
@@ -61,36 +62,28 @@ function UserProfileContainer() {
         <div className="bg-white my-3 border rounded-3 container-60 border border-warning border-3">
           <div className="mt-3 col">
             <UserProfileList
-              userProfileTitle="ชื่อจริง"
-              onChange={handleInputChange}
-              value={input.firstName}
+              userProfileTitle="ชื่อจริง"         
               name="firstName"
               error={error}
-              userInfoProfile="ปีเตอร์"
+              userInfoProfile={usersInfos?.firstName}
             />
             <UserProfileList
               userProfileTitle="นามสกุล"
-              onChange={handleInputChange}
-              value={input.surName}
-              name="surName"
+              name="lastName"
               error={error}
-              userInfoProfile="แอมโบรสฟ"
+              userInfoProfile={usersInfos?.lastName}
             />
             <UserProfileList
               userProfileTitle="เบอร์โทรศัพท์"
-              onChange={handleInputChange}
-              value={input.phone}
-              name="phone"
+              name="telephone"
               error={error}
-              userInfoProfile="088-xxx-xxxx"
+              userInfoProfile={usersInfos?.telephone}
             />
             <UserProfileList
               userProfileTitle="อีเมล"
-              onChange={handleInputChange}
-              value={input.email}
               name="email"
               error={error}
-              userInfoProfile="peter@gmail.com"
+              userInfoProfile={usersInfos?.email}
             />
           </div>
           <div className="text-center mb-3">

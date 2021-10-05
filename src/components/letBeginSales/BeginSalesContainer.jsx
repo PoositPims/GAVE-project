@@ -13,7 +13,7 @@ function BeginSalesContainer() {
 
 
   const [input, setInput] = useState({
-    productName:'',
+      productName:'',
       productPicture:'',
       productSize:'',
       price:'',

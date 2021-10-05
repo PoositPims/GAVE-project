@@ -20,6 +20,7 @@ function SalesRegisContainer() {
     password: "",
     confirmPassword: "",
     shopAddress: "",
+    
   });
 
   const [error, setError] = useState({

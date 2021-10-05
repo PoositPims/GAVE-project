@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
+
+
 function SellerProducts() {
+
+  const [sellerProduct,setSellerProduct] = useState({})
+  
+
   return (
     <>
       <div className="bg-white container px-0 mt-3">
@@ -23,7 +29,7 @@ function SellerProducts() {
 
           <div className="ms-3">
             <NavLink
-              to="/sellerEachPeoduct"
+              to={{pathname: '/sellerEachPeoduct', state: { product: {id: 1} }}}
               className="text-decoration-none text-dark"
             >
               <img src="bottle.jpg" alt="" style={{ width: "100px" }} />
