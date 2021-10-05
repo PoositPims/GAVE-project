@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "../layout/Footer";
+import HeaderFinal from "../layout/HeaderFinal";
 import HeaderSales from "../layout/HeaderSales";
 import BeginSalesContainer from "./BeginSalesContainer";
 
@@ -8,7 +9,8 @@ import BeginSalesContainer from "./BeginSalesContainer";
 function beginSales() {
   return (
     <div>
-      <HeaderSales />
+      {/* <HeaderSales /> */}
+      <HeaderFinal headTitle=' ขาย'/>
       <div className="pb-3 pt-3 bg-grey bg-opacity-25 ">
         <BeginSalesContainer />
       </div>

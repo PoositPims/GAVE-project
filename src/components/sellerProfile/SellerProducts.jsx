@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 function SellerProducts() {
 
   const [sellerProduct,setSellerProduct] = useState({})
-  
+  // ใช้ location ส่งข้อมูลผ่าหน้า..................................
 
   return (
     <>
