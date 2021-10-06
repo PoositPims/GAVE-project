@@ -7,13 +7,16 @@ import SellerProductCard from "./SellerProductCard";
 function SellerProducts() {
   // const { user } = useContext(AuthContext);
   const [sellerProduct, setSellerProduct] = useState([]);
+  const [sellerProductNotActive, setSellerProductNotActive] = useState([]);
   // console.log(sellerProduct)
   useEffect(() => {
     const fetchSalesProduct = async () => {
       try {
-        const res = await axios.get(`/products`);
+        const resActive = await axios.get(`/products`);
+        const resNotAvtive = await axios.get(`/products/?isActive=false`);
         // console.log(res.data)
-        setSellerProduct(res.data.product);
+        setSellerProduct(resActive.data.product);
+        setSellerProductNotActive(resNotAvtive.data.product);
       } catch (err) {
         console.log(err);
       }
@@ -29,15 +32,6 @@ function SellerProducts() {
         {/*  */}
 
         <div className="border-bottom border-warning border-3 mb-3">
-          {/* <div style={{ marginTop: "35px" }}>
-            <img
-              src="burger.png"
-              alt=""
-              style={{ width: "70px", marginLeft: "20px" }}
-            />
-            <p>อาหารและเครื่องดื่ม</p>
-          </div> */}
-
           <h4 className="text-warning ">ลงขายแล้ว</h4>
           {/* <p className="fw-bold">สินค้า</p> */}
 
@@ -63,10 +57,22 @@ function SellerProducts() {
             </div>
           </div>
         </div>
-
         <div className="border-bottom border-warning border-3 mb-3">
           <h4 className="text-warning ">ยังไม่ลงขาย</h4>
-
+          {sellerProductNotActive.map((item) => {
+            return (
+              <NavLink
+                to={{ pathname: "sellerEachPeoduct", state: { id: item.id } }}
+                className="text-decoration-none text-dark"
+              >
+                <SellerProductCard
+                  key={item.id}
+                  productName={item.productName}
+                  productPrice={item.price}
+                />
+              </NavLink>
+            );
+          })}
           {/* <div>
             <img src="bottle.jpg" alt="" style={{ width: "100px" }} />
             <p className="mb-0">น้ำดื่มตราคริสตัน</p>
