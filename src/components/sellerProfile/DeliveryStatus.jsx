@@ -5,24 +5,24 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 function DeliveryStatus() {
   const { user } = useContext(AuthContext);
-  const [sellerMustdos,setSellerMustdos] = useState({
+  const [sellerMustdos, setSellerMustdos] = useState({
     firstName: "",
     lastName: "",
-  })
+  });
 
-  useEffect(()=>{
-    const fetchSalesMustdo = async() =>{
-      try{
-const res = await axios.get(`/users/${user.id}`)
-console.log(res.data)
-setSellerMustdos(res.data.user)
-console.log(res)
-      }catch(err){
-        console.log(err)
+  useEffect(() => {
+    const fetchSalesMustdo = async () => {
+      try {
+        const res = await axios.get(`/users/${user.id}`);
+        console.log(res.data);
+        setSellerMustdos(res.data.user);
+        console.log(res);
+      } catch (err) {
+        console.log(err);
       }
-    }
-    fetchSalesMustdo()
-  },[])
+    };
+    fetchSalesMustdo();
+  }, []);
 
   return (
     <div>

@@ -1,28 +1,34 @@
-import React, { useEffect, useState,useContext} from "react";
-import { NavLink,useLocation } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import axios from "../../config/axios";
 import { AuthContext } from "../../contexts/AuthContext";
 
-
-function SellerEachProContainer() {
+function SellerEachProContainer({ id }) {
   const { user } = useContext(AuthContext);
-  const location = useLocation()
-  const [salesProduct,setSalesProduct] = useState({
-    productName:''
-  })
+  const location = useLocation();
+  const [salesProduct, setSalesProduct] = useState({
+    productName: "",
+    productPicture: "",
+    price: "",
+    discount: "",
+    amount: "",
+    productSize: "",
+    delivery: "",
+    productPicture: "",
+  });
 
-  useEffect(()=>{
-    const fetchSalesProduct = async() =>{
-      try{
-const res = await axios.get(`/products/${location.state.product.id}`)
-setSalesProduct(res.data.product)
-console.log(res)
-      }catch(err){
-        console.log(err)
+  useEffect(() => {
+    const fetchSalesProduct = async () => {
+      try {
+        const res = await axios.get(`/products/${location.state.id}`);
+        setSalesProduct(res.data.product);
+        console.log(res);
+      } catch (err) {
+        console.log(err);
       }
-    }
-    fetchSalesProduct()
-  },[])
+    };
+    fetchSalesProduct();
+  }, []);
 
   return (
     <>
@@ -33,20 +39,19 @@ console.log(res)
         <div className=" border-end border-3 border-grey">
           <h5 className="fw-bold mt-2">
             {/* น้ำดื่มตราคริสตัน 1.5 ล. แพ็ค 6 ขวด ราคาพิเศษ */}
-            {salesProduct.productName}
+            {salesProduct?.productName}
           </h5>
           <div className="text-end">
             <p className="text-primary mb-0 me-2">แก้ไขชื่อ</p>
           </div>
           <img src="bottle.jpg" alt="" width="250px" height="250px" />
-          <div className="d-flex">
+          {salesProduct?.productPicture}
+          {/* <div className="d-flex">
             <img src="bottle2.jpg" alt="" width="100px" height="100px" />
             <img src="bottle2.jpg" alt="" width="100px" height="100px" />
-          </div>
+          </div> */}
           <p className="text-primary mb-0 me-3 text-end ">แก้ไขรูป</p>
         </div>
-        {/*  */}
-        {/*  */}
         <div className="col ms-2">
           <div className="d-flex ">
             <h5 className="fw-bold ms-3 mt-2">รายละเอียดสินค้า</h5>
@@ -55,37 +60,44 @@ console.log(res)
             <div className="d-flex justify-content-between mt-2">
               <p className="fw-bold text-warning">ราคา</p>
               <p>
-                600 
-                <span>{}</span>
-                บาท</p>
+                <span>{salesProduct.price} </span>
+                บาท
+              </p>
               <p className="text-primary mb-0" style={{ marginTop: "10px" }}>
                 แก้ไข
               </p>
             </div>
             <div className="d-flex justify-content-between mt-2">
               <p className="fw-bold text-warning">ส่วนลด</p>
-              <p>20%</p>
+              <p>
+                <span>{salesProduct.discount}</span>
+              </p>
               <p className="text-primary mb-0" style={{ marginTop: "10px" }}>
                 แก้ไข
               </p>
             </div>
             <div className="d-flex justify-content-between mt-2">
               <p className="fw-bold text-warning">มีสินค้าทั้งหมด</p>
-              <p>100 ชิ้น</p>
+              <p>
+                <span>{salesProduct.amount} </span>
+                ชิ้น
+              </p>
               <p className="text-primary mb-0" style={{ marginTop: "10px" }}>
                 แก้ไข
               </p>
             </div>
             <div className="d-flex justify-content-between mt-2">
               <p className="fw-bold text-warning">ขนาด</p>
-              <p>1.5 ลิตร แพ๊ค 6 ขวด (จำนวน 10 ลิตร)</p>
+              {/* <p>1.5 ลิตร แพ๊ค 6 ขวด (จำนวน 10 ลิตร)</p> */}
+              {salesProduct?.productSize}
               <p className="text-primary mb-0" style={{ marginTop: "10px" }}>
                 แก้ไข
               </p>
             </div>
             <div className="d-flex justify-content-between mt-2">
               <p className="fw-bold text-warning">การจัดส่ง</p>
-              <p>Thailand Post</p>
+              {/* <p>Thailand Post</p> */}
+              <span>{salesProduct.delivery}</span>
               <p className="text-primary mb-0" style={{ marginTop: "10px" }}>
                 แก้ไข
               </p>

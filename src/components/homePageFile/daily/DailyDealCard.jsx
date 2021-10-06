@@ -1,10 +1,13 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 
-function DailyDealCard({ productPic, productName, productPrice }) {
+function DailyDealCard({ id, productPic, productName, productPrice }) {
   return (
     <>
-      <NavLink to="/purchase" className="text-decoration-none text-dark">
+      <NavLink
+        to={{ pathname: "/purchase", state: { id } }}
+        className="text-decoration-none text-dark"
+      >
         <div className=" d-flex justify-content-evenly py-2 ">
           <div className="text-center border border-1 border-Secondary rounded-3 shadow-lg ">
             <img

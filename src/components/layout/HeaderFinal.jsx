@@ -5,6 +5,7 @@ import {removeToken} from '../services/localStorage'
 
 function HeaderFinal({headTitle}) {
   const { user, setUser } = useContext(AuthContext);
+  // console.log(user)
 
   const history = useHistory();
 
@@ -12,7 +13,11 @@ function HeaderFinal({headTitle}) {
     e.preventDefault();
     removeToken();
     setUser(null);
-    history.push('/login');
+if(user.role === "BUYER"){
+  history.push('/login');
+} else{
+  history.push('/salesLogin');
+}
   };
   
     return (

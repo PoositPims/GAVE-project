@@ -27,9 +27,9 @@ function SellerProContainer() {
     const fetchSalesInfo = async() => {
       try{
         const res = await axios.get(`/shops/${user.id}`)
-        console.log(res.data)
+        // console.log(res.data)
         setSalesInfos(res.data.shop)
-        console.log(res)
+        // console.log(res)
       }catch(err){
         console.log(err)
       }
@@ -37,7 +37,7 @@ function SellerProContainer() {
     fetchSalesInfo()
   },[])
 
-  console.log(salesInfos)
+  // console.log(salesInfos)
 
   return (
     <div>

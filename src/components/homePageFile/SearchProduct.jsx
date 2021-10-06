@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import {SearchContext} from '../../contexts/searchContext'
 
 function SearchProduct() {
+  const {searchText,setSearchText} = useContext(SearchContext)
     return (
         <div>
             <nav className="navbar navbar-expand-sm sticky-top navbar-light bg-primary pt-0 pb-3">
@@ -10,8 +12,10 @@ function SearchProduct() {
               type="text"
               className="form-control"
               placeholder="ค้นหาดีล, ดีลใกล้เคียง, สินค้า, ร้านค้า"
+              value={searchText}
+              onChange={e=>{setSearchText(e.target.value)}}
             />
-            <button type="button" className="btn btn-warning  ">
+            <button type="button" className="btn btn-warning " onClick={()=>{setSearchText()}}>
               sent
             </button>
           </div>

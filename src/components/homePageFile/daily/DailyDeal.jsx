@@ -1,26 +1,32 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import DailyDealCard from "./DailyDealCard";
 import axios from "../../../config/axios";
 import { NavLink, Link } from "react-router-dom";
-
+import { useContext } from "react";
+import { SearchContext } from "../../../contexts/searchContext";
 
 function DailyDeal() {
-  
-const [productCard,setProductCard] = useState([])
-console.log(productCard)
-useEffect(()=>{
-  const fetchProductCard = async() =>{
-try{
-  const res = await axios.get(`/products`)
-  console.log(res.data)
-  setProductCard(res.data.product)
-  }catch(err){
-    console.log(err)
-  }
-}
-fetchProductCard()
-},[])
+  const [productCard, setProductCard] = useState([]);
+  console.log(productCard);
+  useEffect(() => {
+    const fetchProductCard = async () => {
+      try {
+        const res = await axios.get(`/products/allProduct`);
+        console.log(res.data);
+        setProductCard(res.data.product);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchProductCard();
+  }, []);
+  //............................ รอทำ search
+  const { searchText } = useContext(SearchContext);
 
+  const filterProducts = productCard.filter((item) =>
+    item.productName.toLowerCase().includes(searchText.toLowerCase())
+  );
+  //............................ รอทำ search
   return (
     <>
       <div className="bg-white mt-3 align-items-center container-ping ">
@@ -28,111 +34,18 @@ fetchProductCard()
           ดีลแนะนำประจำวัน
         </h3>
       </div>
-      <div className=" d-flex justify-content-evenly bg-white mt-2 align-items-center  container ">
-      {
-        productCard.map((item)=>{
-          return <DailyDealCard key={item.id} productName={item.productName} productPrice={item.price}/>
-        })
-      }
-</div>
-      {/* <div className=" d-flex justify-content-evenly bg-white mt-2 align-items-center  container ">
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          // productName={productCard?.productname}
-          productPrice="40,000"
-        />
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-      </div> */}
-
-      {/* <div className=" d-flex justify-content-evenly bg-white align-items-center container  ">
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-      </div> */}
-      {/* <div className=" d-flex justify-content-evenly bg-white align-items-center container  ">
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-        <DailyDealCard
-          productPic="paris.jpg"
-          productName="ดีลท่องเที่ยวฝรั่งเศสกลุ่ม"
-          productPrice="40,000"
-        />
-      </div> */}
+      <div className=" d-flex justify-content-evenly bg-white mt-2 align-items-center container ">
+        {productCard.map((item) => {
+          return (
+            <DailyDealCard
+              key={item.id}
+              id={item.id}
+              productName={item.productName}
+              productPrice={item.price}
+            />
+          );
+        })}
+      </div>
     </>
   );
 }

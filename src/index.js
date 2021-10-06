@@ -3,12 +3,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import {SearchProvider} from "./contexts/searchContext"
 
 ReactDOM.render(
   <React.StrictMode>
+    <SearchProvider>
     <AuthContextProvider>
       <App />
     </AuthContextProvider>
+    </SearchProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

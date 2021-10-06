@@ -8,6 +8,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 function UserProfileContainer() {
   // const [name, setName] = useState("");
   const { user } = useContext(AuthContext);
+  console.log(user)
   const [usersInfos, setUsersInfos] = useState({
     firstName: "",
     lastName: "",
