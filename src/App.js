@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import CategoryContainer from "./components/CategoryContainer";
 import DailyDeal from "./components/homePageFile/daily/DailyDeal";
 import Footer from "./components/layout/Footer";
@@ -30,32 +30,96 @@ import { AuthContext } from "./contexts/AuthContext";
 
 function App() {
   const { user, setUser } = useContext(AuthContext);
-
+  const role = user ? user.role : "GUEST";
   return (
+    // <BrowserRouter>
+    //   <Switch>
+    //     <Route path="/login" component={Login} />
+    //     <Route path="/salesLogin" component={SalesLogin} />
+    //     <Route path="/register" component={Register} />
+    //     <Route path="/userProfile" component={UserProfile} />
+    //     <Route path="/saleRegister" component={SaleRegister} />
+    //     <Route path="/sellerEachPeoduct" component={SellerEachPeoduct} />
+    //     <Route path="/sellerProfile" component={SellerProfile} />
+    //     <Route path="/cart" component={Cart} />
+    //     <Route path="/contactus" component={ContactUs} />
+    //     <Route path="/payment" component={Payment} />
+    //     <Route path="/beginSales" component={BeginSales} />
+    //     <Route path="/purchase" component={Purchase} />
+    //     <Route path="/" component={Homepage} />
+    //   </Switch>
+    // </BrowserRouter>
+    // ......................................................................
+
     <BrowserRouter>
       <Switch>
-        <Route path="/login" component={Login} s/>
-        <Route path="/salesLogin" component={SalesLogin}/>
-        <Route path="/register" component={Register} />
-        <Route path="/userProfile" component={UserProfile} />
-        <Route path="/saleRegister" component={SaleRegister} />
-        <Route path="/sellerEachPeoduct" component={SellerEachPeoduct} />
-        <Route path="/sellerProfile" component={SellerProfile} />
-        <Route path="/cart" component={Cart} />
-        <Route path="/contactus" component={ContactUs} />
-        <Route path="/payment" component={Payment} />
-        <Route path="/beginSales" component={BeginSales} />
-        <Route path="/purchase" component={Purchase} />
-        <Route path="/" component={Homepage} />
+        {role === "SHOP" ? (
+          <>
+            {/* <Route path="/salesLogin" component={SalesLogin} />
+            <Route path="/saleRegister" component={SaleRegister} /> */}
+            <Route path="/sellerEachPeoduct" component={SellerEachPeoduct} />
+            <Route path="/beginSales" component={BeginSales} />
+            <Route path="/sellerProfile" component={SellerProfile} />
+            <Route path="/contactus" component={ContactUs} />
+            <Route exact path="/" component={Homepage} />
+          </>
+        ) : role === "BUYER" ? (
+          <>
+            {/* <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} /> */}
+            <Route path="/userProfile" component={UserProfile} />
+            <Route path="/cart" component={Cart} />
+            <Route path="/contactus" component={ContactUs} />
+            <Route path="/purchase" component={Purchase} />
+            <Route path="/payment" component={Payment} />
+            <Route exact path="/" component={Homepage} />
+          </>
+        ) : (
+          <>
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/salesLogin" component={SalesLogin} />
+            <Route path="/saleRegister" component={SaleRegister} />
+            <Route path="/contactus" component={ContactUs} />
+            <Route path="/" component={Homepage} />
+          </>
+        )}
       </Switch>
     </BrowserRouter>
+    // ............................................................
   );
 }
 
 export default App;
 
 {
-  /* {user.role ? ( // ถ้า user ฒีค่าแสดงว่า login แล้ว ถึงเข้าถึงหน้า Home ได้
+  /* {user === 'SHOP' ? (
+            <>
+               <Route path="/salesLogin" component={SalesLogin} />
+<Route path="/saleRegister" component={SaleRegister} />
+<Route path="/sellerEachPeoduct" component={SellerEachPeoduct} />
+<Route path="/sellerProfile" component={SellerProfile} />
+<Route path="/payment" component={Payment} />
+Route path="/purchase" component={Purchase} />
+<Route path="/contactus" component={ContactUs} />
+              <Redirect to="/" />
+            </>
+          ) : user === 'BUYER'(
+            <>
+            
+              <Route path="/login" component={Login}
+              Route path="/register" component={Register} />
+              <Route path="/userProfile" component={UserProfile} />
+               <Route path="/cart" component={Cart} />
+               <Route path="/contactus" component={ContactUs} />
+               <Route path="/beginSales" component={BeginSales} />
+              <Redirect to="/" />
+            </>
+          )} */
+}
+
+{
+  /* {user.role === "SELLER" ? ( // ถ้า user ฒีค่าแสดงว่า login แล้ว ถึงเข้าถึงหน้า Home ได้
           // role user
             <>
               <Route exact path="/" component={Home} />

@@ -3,14 +3,17 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { AuthContextProvider } from "./contexts/AuthContext";
-import {SearchProvider} from "./contexts/searchContext"
+import { SearchProvider } from "./contexts/searchContext";
+import { SellerProductProvider } from "./contexts/sellerProductContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <SearchProvider>
-    <AuthContextProvider>
-      <App />
-    </AuthContextProvider>
+      <SellerProductProvider>
+        <AuthContextProvider>
+          <App />
+        </AuthContextProvider>
+      </SellerProductProvider>
     </SearchProvider>
   </React.StrictMode>,
   document.getElementById("root")

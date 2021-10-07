@@ -1,33 +1,24 @@
 import React, { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "../../config/axios";
+import SellerEachProContainer from "../SellerEachProduct/SellerEachProContainer";
 import SellerProductCard from "./SellerProductCard";
+import { SellerProductContext } from "../../contexts/sellerProductContext";
 // import { AuthContext } from "../../contexts/AuthContext";
 
 function SellerProducts() {
   // const { user } = useContext(AuthContext);
-  const [sellerProduct, setSellerProduct] = useState([]);
-  const [sellerProductNotActive, setSellerProductNotActive] = useState([]);
+
+  const {
+    sellerProduct,
+    setSellerProduct,
+    sellerProductNotActive,
+    setSellerProductNotActive,
+  } = useContext(SellerProductContext);
+
   // console.log(sellerProduct)
-  useEffect(() => {
-    const fetchSalesProduct = async () => {
-      try {
-        const resActive = await axios.get(`/products/sold`);
-        const resNotAvtive = await axios.get(
-          `/products/notSold/?isActive=false`
-        );
-        // const resNotAvtive = await axios.get(
-        //   `/products/notSold/?isActive=false`
-        // );
-        // console.log(resNotAvtive.data);
-        setSellerProduct(resActive.data.product);
-        setSellerProductNotActive(resNotAvtive.data.product);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchSalesProduct();
-  }, []);
+
+  // .......
   // ใช้ location ส่งข้อมูลผ่าหน้า..................................
 
   // const deleteProductNonActiveByid = (id) => {
@@ -50,13 +41,16 @@ function SellerProducts() {
           {/* <p className="fw-bold">สินค้า</p> */}
 
           <div className="ms-3">
-            <div className=" d-flex bg-white mt-2 align-items-center container justify-content-evenly ">
+            <div className=" d-flex flex-wrap bg-white mt-2 align-items-center container justify-content-evenly ">
               {sellerProduct.map((item) => {
                 return (
                   <NavLink
                     to={{
                       pathname: "/sellerEachPeoduct",
-                      state: { id: item.id },
+                      state: {
+                        id: item.id,
+                        mode: "active",
+                      },
                     }}
                     className="text-decoration-none text-dark"
                   >
@@ -73,13 +67,16 @@ function SellerProducts() {
         </div>
         <div className="border-bottom border-warning border-3 mb-3">
           <h4 className="text-warning ">ยังไม่ลงขาย</h4>
-          <div className=" d-flex bg-white mt-2 align-items-center container justify-content-evenly ">
+          <div className=" d-flex flex-wrap bg-white mt-2 align-items-center container justify-content-evenly ">
             {sellerProductNotActive.map((item) => {
               return (
                 <NavLink
                   to={{
                     pathname: "sellerEachPeoduct",
-                    state: { id: item.id },
+                    state: {
+                      id: item.id,
+                      mode: "inActive",
+                    },
                   }}
                   className="text-decoration-none text-dark"
                 >
