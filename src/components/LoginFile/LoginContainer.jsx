@@ -8,28 +8,17 @@ import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
 function LoginContainer() {
-  
   const history = useHistory();
   // const [name, setName] = useState("");
   // const [username, setUsername] = useState("");
   const { setUser } = useContext(AuthContext);
   const [input, setInput] = useState({
-    // firstName: "",
-    // surName: "",
-    // phone: "",
-    // email: "",
     username: "",
     password: "",
-    // confirmPass: "",
   });
   const [error, setError] = useState({
-    // firstName: "",
-    // surName: "",
-    // phone: "",
-    // email: "",
     username: "",
     password: "",
-    // confirmPass: "",
   });
 
   const validateName = (value) => {

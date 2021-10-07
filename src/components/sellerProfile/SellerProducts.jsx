@@ -12,9 +12,14 @@ function SellerProducts() {
   useEffect(() => {
     const fetchSalesProduct = async () => {
       try {
-        const resActive = await axios.get(`/products`);
-        const resNotAvtive = await axios.get(`/products/?isActive=false`);
-        // console.log(res.data)
+        const resActive = await axios.get(`/products/sold`);
+        const resNotAvtive = await axios.get(
+          `/products/notSold/?isActive=false`
+        );
+        // const resNotAvtive = await axios.get(
+        //   `/products/notSold/?isActive=false`
+        // );
+        // console.log(resNotAvtive.data);
         setSellerProduct(resActive.data.product);
         setSellerProductNotActive(resNotAvtive.data.product);
       } catch (err) {
@@ -24,6 +29,15 @@ function SellerProducts() {
     fetchSalesProduct();
   }, []);
   // ใช้ location ส่งข้อมูลผ่าหน้า..................................
+
+  // const deleteProductNonActiveByid = (id) => {
+  //   const idx = sellerProductNotActive.findIndex((item) => item.id === id);
+  //   if (idx !== -1) {
+  //     const newSellerProductNotActive = [...sellerProductNotActive];
+  //     newSellerProductNotActive.splice(idx, 1);
+  //     setSellerProductNotActive(newSellerProductNotActive);
+  //   }
+  // };
 
   return (
     <>
@@ -59,25 +73,26 @@ function SellerProducts() {
         </div>
         <div className="border-bottom border-warning border-3 mb-3">
           <h4 className="text-warning ">ยังไม่ลงขาย</h4>
-          {sellerProductNotActive.map((item) => {
-            return (
-              <NavLink
-                to={{ pathname: "sellerEachPeoduct", state: { id: item.id } }}
-                className="text-decoration-none text-dark"
-              >
-                <SellerProductCard
-                  key={item.id}
-                  productName={item.productName}
-                  productPrice={item.price}
-                />
-              </NavLink>
-            );
-          })}
-          {/* <div>
-            <img src="bottle.jpg" alt="" style={{ width: "100px" }} />
-            <p className="mb-0">น้ำดื่มตราคริสตัน</p>
-            <p className="mb-0">ในคลัง : 100 แพค</p>
-          </div> */}
+          <div className=" d-flex bg-white mt-2 align-items-center container justify-content-evenly ">
+            {sellerProductNotActive.map((item) => {
+              return (
+                <NavLink
+                  to={{
+                    pathname: "sellerEachPeoduct",
+                    state: { id: item.id },
+                  }}
+                  className="text-decoration-none text-dark"
+                >
+                  <SellerProductCard
+                    key={item.id}
+                    productName={item.productName}
+                    productPrice={item.price}
+                    // deleteProductNonActiveByid={deleteProductNonActiveByid}
+                  />
+                </NavLink>
+              );
+            })}
+          </div>
         </div>
 
         <div className="text-end mt-3">

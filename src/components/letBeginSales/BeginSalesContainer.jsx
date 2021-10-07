@@ -11,59 +11,98 @@ import { useHistory } from "react-router-dom";
 function BeginSalesContainer() {
   const history = useHistory();
 
-
   const [input, setInput] = useState({
-      productName:'',
-      productPicture:'',
-      productSize:'',
-      price:'',
-      discount:'',
-      amount:'',
-      delivery:'',
-      isActive:'',
-  })
-
-  const [error, setError] = useState({
-    productName:'',
-    productPicture:'',
-    productSize:'',
-    price:'',
-    discount:'',
-    amount:'',
-    delivery:'',
-    isActive:'',
+    productName: "",
+    productPicture: "",
+    productSize: "",
+    price: "",
+    discount: "",
+    amount: "",
+    delivery: "",
+    isActive: "",
   });
 
-  const handleSubmitForm = async e => {
-    e.preventDefault()
-    try{
-      const res = await axios.post('/products/createProduct',{
-    productName: input.productName,
-    productPicture: input.productPicture,
-    productSize: input.productSize,
-    price: input.price,
-    discount: input.discount,
-    amount: input.amount,
-    delivery: input.delivery,
-    isActive: input.isActive,
-      })
+  const [error, setError] = useState({
+    productName: "",
+    productPicture: "",
+    productSize: "",
+    price: "",
+    discount: "",
+    amount: "",
+    delivery: "",
+    isActive: "",
+  });
+
+  const handleSubmitForm = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("/products/createProduct", {
+        productName: input.productName,
+        productPicture: input.productPicture,
+        productSize: input.productSize,
+        price: input.price,
+        discount: input.discount,
+        amount: input.amount,
+        delivery: input.delivery,
+        isActive: true,
+      });
       history.push("/sellerProfile");
-    } catch(err){
+    } catch (err) {
       if (err.response && err.response.status === 400) {
         setError("Invalid username or password");
       }
     }
-  }
+  };
 
+  const handleSaveButNotSell = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("/products/createProduct", {
+        productName: input.productName,
+        productPicture: input.productPicture,
+        productSize: input.productSize,
+        price: input.price,
+        discount: input.discount,
+        amount: input.amount,
+        delivery: input.delivery,
+        isActive: false,
+      });
+      history.push("/sellerProfile");
+    } catch (err) {
+      if (err.response && err.response.status === 400) {
+        setError("Invalid username or password");
+      }
+    }
+  };
 
   return (
     <>
       <p className="text-start  fs-5 ms-5">ลงขายสินค้า</p>
-      <form onSubmit={handleSubmitForm}>
-      <GeneralInfo input={input} setInput={setInput} error={error} setError={setError}/>
-      <DetailProductSales input={input} setInput={setInput} error={error} setError={setError} />
-      <DeliveringSales input={input} setInput={setInput} error={error} setError={setError}/>
-      <BeginSalesButton />
+      <form
+      // onSubmit={handleSubmitForm}
+      >
+        <GeneralInfo
+          input={input}
+          setInput={setInput}
+          error={error}
+          setError={setError}
+        />
+        <DetailProductSales
+          input={input}
+          setInput={setInput}
+          error={error}
+          setError={setError}
+        />
+        <DeliveringSales
+          input={input}
+          setInput={setInput}
+          error={error}
+          setError={setError}
+        />
+        <BeginSalesButton
+          handleSubmitForm={handleSubmitForm}
+          handleSaveButNotSell={handleSaveButNotSell}
+        />
       </form>
     </>
   );

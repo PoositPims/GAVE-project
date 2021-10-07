@@ -12,6 +12,8 @@ function DailyDeal() {
     const fetchProductCard = async () => {
       try {
         const res = await axios.get(`/products/allProduct`);
+        // const res = await axios.get(`/products/allProduct/?isActive=true`);
+        // const res = await axios.get(`/products/sold`);
         console.log(res.data);
         setProductCard(res.data.product);
       } catch (err) {
@@ -34,7 +36,7 @@ function DailyDeal() {
           ดีลแนะนำประจำวัน
         </h3>
       </div>
-      <div className=" d-flex justify-content-evenly bg-white mt-2 align-items-center container ">
+      <div className=" d-flex flex-wrap justify-content-evenly bg-white mt-2 align-items-center container ">
         {productCard.map((item) => {
           return (
             <DailyDealCard

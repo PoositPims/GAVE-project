@@ -3,10 +3,11 @@ import { NavLink, useLocation } from "react-router-dom";
 import axios from "../../config/axios";
 import { AuthContext } from "../../contexts/AuthContext";
 
-function SellerEachProContainer({ id }) {
+function SellerEachProContainer({ id, deleteProductNonActiveByid }) {
   const { user } = useContext(AuthContext);
   const location = useLocation();
   const [salesProduct, setSalesProduct] = useState({
+    id: "",
     productName: "",
     productPicture: "",
     price: "",
@@ -16,6 +17,8 @@ function SellerEachProContainer({ id }) {
     delivery: "",
     productPicture: "",
   });
+
+  console.log(salesProduct.id);
 
   useEffect(() => {
     const fetchSalesProduct = async () => {
@@ -29,6 +32,15 @@ function SellerEachProContainer({ id }) {
     };
     fetchSalesProduct();
   }, []);
+
+  const handleClickDelete = async () => {
+    try {
+      await axios.delete(`/products/${salesProduct.id}`);
+      // deleteProductNonActiveByid(salesProduct.id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -103,6 +115,14 @@ function SellerEachProContainer({ id }) {
               </p>
             </div>
             <div className="text-center mt-3">
+              <NavLink to="sellerProfile">
+                <button
+                  className="btn btn-outline-danger me-2"
+                  onClick={handleClickDelete}
+                >
+                  ลบสินค้า
+                </button>
+              </NavLink>
               <button className="btn btn-outline-primary me-2">
                 ยืนยันแต่ยังไม่ขาย
               </button>
