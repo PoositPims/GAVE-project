@@ -12,12 +12,13 @@ function SellerProductProvider({ children }) {
       try {
         const resActive = await axios.get(`/products/sold`);
         const resNotAvtive = await axios.get(
-          `/products/notSold/?isActive=false`
+          `/products/notSold/?isActive=false
+          `
         );
         // const resNotAvtive = await axios.get(
         //   `/products/notSold/?isActive=false`
         // );
-        // console.log(resNotAvtive.data);
+        // console.log(resActive.data);
         setSellerProduct(resActive.data.product);
         setSellerProductNotActive(resNotAvtive.data.product);
       } catch (err) {

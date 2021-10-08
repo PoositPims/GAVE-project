@@ -16,8 +16,7 @@ function MainPurchase({
       <div className=" d-flex bg-white container-80 justify-content-between ">
         <div className="col">
           <p className="fs-6">ขายโดย ร้านสงขลาค้าส่ง</p>
-          <img src="bottle.jpg" alt="" width="250px" height="250px" />
-          {productPicture}
+          <img src={productPicture} alt="" width="250px" height="250px" />
           {/* <div className="d-flex">
             <img src="bottle2.jpg" alt="" width="100px" height="100px" />
             <img src="bottle2.jpg" alt="" width="100px" height="100px" />

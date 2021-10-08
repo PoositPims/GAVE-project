@@ -5,16 +5,19 @@ import App from "./App";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import { SearchProvider } from "./contexts/searchContext";
 import { SellerProductProvider } from "./contexts/sellerProductContext";
+// import { SellerProvider } from "./contexts/sellerContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <SearchProvider>
-      <SellerProductProvider>
-        <AuthContextProvider>
+    <AuthContextProvider>
+      <SearchProvider>
+        {/* <SellerProvider> */}
+        <SellerProductProvider>
           <App />
-        </AuthContextProvider>
-      </SellerProductProvider>
-    </SearchProvider>
+        </SellerProductProvider>
+        {/* </SellerProvider> */}
+      </SearchProvider>
+    </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -77,12 +77,13 @@ function App() {
           </>
         ) : (
           <>
+            <Route path="/purchase" component={Purchase} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/salesLogin" component={SalesLogin} />
             <Route path="/saleRegister" component={SaleRegister} />
             <Route path="/contactus" component={ContactUs} />
-            <Route path="/" component={Homepage} />
+            <Route exact path="/" component={Homepage} />
           </>
         )}
       </Switch>
