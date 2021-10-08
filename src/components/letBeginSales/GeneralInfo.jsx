@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { isEmpty } from "../services/validateService";
 
-function GeneralInfo({input,setInput,error,setError}) {
-
-  const validateName = ({value}) => {
+function GeneralInfo({ input, setInput, error, setError, setProductPicture }) {
+  // const [productPicture, setProductPicture] = useState(null);
+  const validateName = ({ value }) => {
     if (isEmpty(value)) {
       return "Name is required";
     }
     return "";
   };
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     if (e.target.value === "") {
       // setError("กรุณากรอกข้อมูล");
       setError((curErr) => ({
@@ -23,7 +23,12 @@ function GeneralInfo({input,setInput,error,setError}) {
       setError("");
     }
     setInput((current) => ({ ...current, [e.target.name]: e.target.value }));
-  }
+  };
+
+  const handleChangeFile = (e) => {
+    console.log(e.target.files);
+    setProductPicture(e.target.files[0]);
+  };
 
   return (
     <div>
@@ -80,7 +85,27 @@ function GeneralInfo({input,setInput,error,setError}) {
           </div>
         </div>
 
-        <div className="d-flex input-group mb-3 mt-3 ">
+        {/*  */}
+
+        <div className="d-flex input-group mt-3 container row ">
+          <div className="col-2">
+            <p>รูปภาพสินค้า</p>
+          </div>
+          <div className="col">
+            <input
+              className="form-control"
+              type="file"
+              name="image"
+              style={{ width: "250px" }}
+              // value={productPicture}
+              // onChange={handleInputChange}
+              onChange={handleChangeFile}
+            />
+          </div>
+        </div>
+
+        {/*  */}
+        {/* <div className="d-flex input-group mb-3 mt-3 ">
           <h6 className="mt-3">รูปภาพสินค้า</h6>
 
           <div className="text-center me-5 ms-5 ">
@@ -107,7 +132,7 @@ function GeneralInfo({input,setInput,error,setError}) {
             </div>
             <p>เพิ่อมรูปภาพ</p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

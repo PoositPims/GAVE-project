@@ -1,10 +1,10 @@
 import "./App.css";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import CategoryContainer from "./components/CategoryContainer";
-import DailyDeal from "./components/homePageFile/daily/DailyDeal";
-import Footer from "./components/layout/Footer";
-import Header from "./components/layout/Header";
-import WeeklyDealContainer from "./components/WeeklyDealContainer";
+// import CategoryContainer from "./components/CategoryContainer";
+// import DailyDeal from "./components/homePageFile/daily/DailyDeal";
+// import Footer from "./components/layout/Footer";
+// import Header from "./components/layout/Header";
+// import WeeklyDealContainer from "./components/WeeklyDealContainer";
 import Homepage from "./components/homePageFile/Homepage";
 import { user as initialUser } from "./components/services/localStorage";
 // import Login from "./components/pages/Login";
@@ -27,6 +27,7 @@ import SalesLogin from "./components/salerLogin/SalesLogin";
 // import MainClothCategories from "./components/Categories/Cloth/MainClothCategories";
 import { createContext, useState, useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
+// const multer = require("multer");
 
 function App() {
   const { user, setUser } = useContext(AuthContext);

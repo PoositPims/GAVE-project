@@ -44,6 +44,7 @@ function DailyDeal() {
               id={item.id}
               productName={item.productName}
               productPrice={item.price}
+              productPic={item.productPicture}
             />
           );
         })}

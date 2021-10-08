@@ -142,8 +142,13 @@ function SellerEachProContainer({ id, deleteProductNonActiveByid }) {
               </p>
             )}
           </div>
-          <img src="bottle.jpg" alt="" width="250px" height="250px" />
-          {salesProducts?.productPicture}
+          <img
+            src={salesProducts.productPicture}
+            alt=""
+            width="250px"
+            height="250px"
+          />
+          {/* {salesProducts?.productPicture} */}
           <p className="text-primary mb-0 me-3 text-end ">แก้ไขรูป</p>
         </div>
         <div className="col ms-2">

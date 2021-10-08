@@ -13,7 +13,7 @@ function BeginSalesContainer() {
 
   const [input, setInput] = useState({
     productName: "",
-    productPicture: "",
+    // productPicture: "",
     productSize: "",
     price: "",
     discount: "",
@@ -21,6 +21,8 @@ function BeginSalesContainer() {
     delivery: "",
     isActive: "",
   });
+
+  const [productPicture, setProductPicture] = useState(null);
 
   const [error, setError] = useState({
     productName: "",
@@ -35,44 +37,74 @@ function BeginSalesContainer() {
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.post("/products/createProduct", {
-        productName: input.productName,
-        productPicture: input.productPicture,
-        productSize: input.productSize,
-        price: input.price,
-        discount: input.discount,
-        amount: input.amount,
-        delivery: input.delivery,
-        isActive: true,
-      });
+    // try {
+    //   const res = await axios.post("/products/createProduct", {
+    //     productName: input.productName,
+    //     productPicture: input.productPicture,
+    //     productSize: input.productSize,
+    //     price: input.price,
+    //     discount: input.discount,
+    //     amount: input.amount,
+    //     delivery: input.delivery,
+    //     isActive: true,
+    //   });
+    //   history.push("/sellerProfile");
+    // } catch (err) {
+    //   if (err.response && err.response.status === 400) {
+    //     setError("Invalid username or password");
+    //   }
+    // }
+
+    const formData = new FormData();
+    formData.append("productName", input.productName);
+    // formData.append("productPicture", input.productPicture);
+    formData.append("productSize", input.productSize);
+    formData.append("price", input.price);
+    formData.append("discount", input.discount);
+    formData.append("amount", input.amount);
+    formData.append("delivery", input.delivery);
+    formData.append("isActive", true);
+    formData.append("cloudInput", productPicture);
+
+    axios.post("/products/createProduct", formData).then((res) => {
       history.push("/sellerProfile");
-    } catch (err) {
-      if (err.response && err.response.status === 400) {
-        setError("Invalid username or password");
-      }
-    }
+    });
   };
 
   const handleSaveButNotSell = async (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.post("/products/createProduct", {
-        productName: input.productName,
-        productPicture: input.productPicture,
-        productSize: input.productSize,
-        price: input.price,
-        discount: input.discount,
-        amount: input.amount,
-        delivery: input.delivery,
-        isActive: false,
-      });
+    // try {
+    //   const res = await axios.post("/products/createProduct", {
+    //     productName: input.productName,
+    //     productPicture: input.productPicture,
+    //     productSize: input.productSize,
+    //     price: input.price,
+    //     discount: input.discount,
+    //     amount: input.amount,
+    //     delivery: input.delivery,
+    //     isActive: false,
+    //   });
+    //   history.push("/sellerProfile");
+    // } catch (err) {
+    //   if (err.response && err.response.status === 400) {
+    //     setError("Invalid username or password");
+    //   }
+    // }
+
+    const formData = new FormData();
+    formData.append("productName", input.productName);
+    // formData.append("productPicture", input.productPicture);
+    formData.append("productSize", input.productSize);
+    formData.append("price", input.price);
+    formData.append("discount", input.discount);
+    formData.append("amount", input.amount);
+    formData.append("delivery", input.delivery);
+    formData.append("isActive", false);
+    formData.append("cloudInput", productPicture);
+
+    axios.post("/products/createProduct", formData).then((res) => {
       history.push("/sellerProfile");
-    } catch (err) {
-      if (err.response && err.response.status === 400) {
-        setError("Invalid username or password");
-      }
-    }
+    });
   };
 
   return (
@@ -86,6 +118,8 @@ function BeginSalesContainer() {
           setInput={setInput}
           error={error}
           setError={setError}
+          productPicture={productPicture}
+          setProductPicture={setProductPicture}
         />
         <DetailProductSales
           input={input}

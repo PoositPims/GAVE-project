@@ -15,6 +15,8 @@ function SellerProducts() {
     sellerProductNotActive,
     setSellerProductNotActive,
   } = useContext(SellerProductContext);
+  // console.log(sellerProduct);
+  // console.log(sellerProductNotActive);
 
   // console.log(sellerProduct)
 
@@ -58,6 +60,7 @@ function SellerProducts() {
                       key={item.id}
                       productName={item.productName}
                       productPrice={item.price}
+                      productPic={item.productPicture}
                     />
                   </NavLink>
                 );
@@ -84,6 +87,7 @@ function SellerProducts() {
                     key={item.id}
                     productName={item.productName}
                     productPrice={item.price}
+                    productPic={item.productPicture}
                     // deleteProductNonActiveByid={deleteProductNonActiveByid}
                   />
                 </NavLink>
