@@ -4,10 +4,14 @@ import axios from "../../../config/axios";
 import { NavLink, Link } from "react-router-dom";
 import { useContext } from "react";
 import { SearchContext } from "../../../contexts/searchContext";
+import { SellerProductContext } from "../../../contexts/sellerProductContext";
 
-function DailyDeal() {
+function DailyDeal({ sellerProduct }) {
   const [productCard, setProductCard] = useState([]);
-  console.log(productCard);
+  // const { sellerProduct, setSellerProduct } = useContext(SellerProductContext);
+
+  // console.log(productCard);
+  // เปลี่ยนจาก productCard เป็น sellerProduct............************************************
   useEffect(() => {
     const fetchProductCard = async () => {
       try {
@@ -16,6 +20,7 @@ function DailyDeal() {
         // const res = await axios.get(`/products/sold`);
         console.log(res.data);
         setProductCard(res.data.product);
+        // setSellerProduct(res.data.product);
       } catch (err) {
         console.log(err);
       }
@@ -37,7 +42,8 @@ function DailyDeal() {
         </h3>
       </div>
       <div className=" d-flex flex-wrap justify-content-evenly bg-white mt-2 align-items-center container ">
-        {productCard.map((item) => {
+        {/* {productCard.map((item) => { */}
+        {filterProducts.map((item) => {
           return (
             <DailyDealCard
               key={item.id}

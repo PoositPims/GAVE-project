@@ -11,11 +11,9 @@ ReactDOM.render(
   <React.StrictMode>
     <AuthContextProvider>
       <SearchProvider>
-        {/* <SellerProvider> */}
         <SellerProductProvider>
           <App />
         </SellerProductProvider>
-        {/* </SellerProvider> */}
       </SearchProvider>
     </AuthContextProvider>
   </React.StrictMode>,

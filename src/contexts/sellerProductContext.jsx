@@ -20,6 +20,12 @@ function SellerProductProvider({ children }) {
         // );
         // console.log(resActive.data);
         setSellerProduct(resActive.data.product);
+        // setSellerProduct(
+        //   resActive.data.sellerProduct.map((item) => ({
+        //     ...item,
+        //     date: new Date(item.date),
+        //   }))
+        // );
         setSellerProductNotActive(resNotAvtive.data.product);
       } catch (err) {
         console.log(err);

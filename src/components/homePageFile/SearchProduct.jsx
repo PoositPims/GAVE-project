@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
-import {SearchContext} from '../../contexts/searchContext'
+import React, { useContext } from "react";
+import { SearchContext } from "../../contexts/searchContext";
 
 function SearchProduct() {
-  const {searchText,setSearchText} = useContext(SearchContext)
-    return (
-        <div>
-            <nav className="navbar navbar-expand-sm sticky-top navbar-light bg-primary pt-0 pb-3">
+  const { searchText, setSearchText } = useContext(SearchContext);
+  return (
+    <div>
+      <nav className="navbar navbar-expand-sm sticky-top navbar-light bg-primary pt-0 pb-3">
         <div className="row w-25 m-auto">
           <div className="container-fluid text-white input-group ">
             <input
@@ -13,16 +13,25 @@ function SearchProduct() {
               className="form-control"
               placeholder="ค้นหาดีล, ดีลใกล้เคียง, สินค้า, ร้านค้า"
               value={searchText}
-              onChange={e=>{setSearchText(e.target.value)}}
+              onChange={(e) => {
+                setSearchText(e.target.value);
+              }}
             />
-            <button type="button" className="btn btn-warning " onClick={()=>{setSearchText()}}>
+            <button
+              type="button"
+              className="btn btn-warning "
+              onClick={() => {
+                setSearchText();
+              }}
+            >
+              {/* <i class="bi bi-search"></i> */}
               sent
             </button>
           </div>
         </div>
       </nav>
-        </div>
-    )
+    </div>
+  );
 }
 
-export default SearchProduct
+export default SearchProduct;
