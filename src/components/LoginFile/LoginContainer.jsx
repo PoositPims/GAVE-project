@@ -63,8 +63,8 @@ function LoginContainer() {
       console.log(res);
       setToken(res.data.token);
       setUser(jwtDecode(res.data.token));
-      // history.push("/");
-      history.push("/userProfile");
+      // history.push("/userProfile");
+      history.push("/");
     } catch (err) {
       console.dir(err);
       if (err.response && err.response.status === 400) {

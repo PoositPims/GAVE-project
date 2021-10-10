@@ -1,7 +1,51 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import axios from "../../config/axios";
 
-function CartPayment() {
+// import { SellerProductContext } from "../../contexts/sellerProductContext";
+
+function CartPayment({
+  salesProduct: {
+    productName,
+    price,
+    delivery,
+    amount,
+    productSize,
+    productPicture,
+  },
+  onAdd,
+  product,
+}) {
+  // const { sellerProduct, onAdd, setSellerProduct } =
+  //   useContext(SellerProductContext);
+
+  // const location = useLocation();
+
+  // const [salesProduct, setSalesProduct] = useState({
+  //   productName: "",
+  //   productPicture: "",
+  //   price: "",
+  //   discount: "",
+  //   amount: "",
+  //   productSize: "",
+  //   delivery: "",
+  //   productPicture: "",
+  // });
+
+  // useEffect(() => {
+  //   console.log("fetch");
+  //   const fetchSalesProduct = async () => {
+  //     try {
+  //       const res = await axios.get(`/products/${location.state.id}`);
+  //       setSalesProduct(res.data.product);
+  //       // console.log(res);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   fetchSalesProduct();
+  // }, []);
+
   return (
     <>
       <div
@@ -18,24 +62,14 @@ function CartPayment() {
         </div>
         <div className="d-flex justify-content-between container mt-3">
           <p className="fw-bold">ยอดรวม ( 1 รายการ )</p>
-          <p className="fw-bold">THB 480</p>
+          {/* <p className="fw-bold">THB 480</p> */}
+          <p className="fw-bold">THB {price}</p>
         </div>
-        <div className="d-flex justify-content-between container mt-3">
+        {/* <div className="d-flex justify-content-between container mt-3">
           <p className="fw-bold">ค่าจัดส่ง</p>
           <p className="fw-bold">-</p>
-        </div>
-
-        {/* <div className="d-flex justify-content-between container mt-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="โค้ดส่วนลด"
-            style={{ width: "200px", height: "30px" }}
-          />
-          <button className="btn btn-warning" style={{ height: "30px" }}>
-            Sent
-          </button>
         </div> */}
+
         <div className="d-flex justify-content-between container  mt-3">
           <p className="fw-bold">ยอดรวมทั้งสิ้น</p>
           <div>

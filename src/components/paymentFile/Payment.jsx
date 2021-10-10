@@ -2,15 +2,17 @@ import React from "react";
 import Footer from "../layout/Footer";
 import HeaderFinal from "../layout/HeaderFinal";
 import HeaderPayment from "../layout/HeaderPayment";
+import Chillpay from "./Chillpay";
 import PaymentContainer from "./PaymentContainer";
 
 function Payment() {
   return (
     <div>
       {/* <HeaderPayment /> */}
-      <HeaderFinal headTitle=' ชำระเงิน'/>
+      <HeaderFinal headTitle=" ชำระเงิน" />
       <div className="pb-3 pt-3 bg-grey bg-opacity-25 ">
         <PaymentContainer />
+        {/* <Chillpay /> */}
       </div>
       <Footer />
     </div>

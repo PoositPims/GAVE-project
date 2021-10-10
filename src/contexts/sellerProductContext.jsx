@@ -6,6 +6,7 @@ const SellerProductContext = createContext();
 function SellerProductProvider({ children }) {
   const [sellerProduct, setSellerProduct] = useState([]);
   const [sellerProductNotActive, setSellerProductNotActive] = useState([]);
+  console.log(sellerProduct);
 
   useEffect(() => {
     const fetchSalesProduct = async () => {
@@ -20,12 +21,6 @@ function SellerProductProvider({ children }) {
         // );
         // console.log(resActive.data);
         setSellerProduct(resActive.data.product);
-        // setSellerProduct(
-        //   resActive.data.sellerProduct.map((item) => ({
-        //     ...item,
-        //     date: new Date(item.date),
-        //   }))
-        // );
         setSellerProductNotActive(resNotAvtive.data.product);
       } catch (err) {
         console.log(err);
@@ -34,6 +29,17 @@ function SellerProductProvider({ children }) {
     fetchSalesProduct();
   }, []);
 
+  const onAdd = (product) => {
+    const idx = sellerProduct.findIndex((item) => item.id === product.id);
+    const newCart = [...sellerProduct];
+    if (idx > -1) {
+      newCart[idx] = { ...newCart[idx], qty: newCart[idx].qty + 1 };
+    } else {
+      newCart.push({ ...product, qty: 1 });
+    }
+    setSellerProduct(newCart);
+  };
+
   return (
     <SellerProductContext.Provider
       value={{
@@ -41,6 +47,7 @@ function SellerProductProvider({ children }) {
         setSellerProduct,
         sellerProductNotActive,
         setSellerProductNotActive,
+        onAdd,
       }}
     >
       {children}

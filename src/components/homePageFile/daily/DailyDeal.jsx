@@ -6,27 +6,27 @@ import { useContext } from "react";
 import { SearchContext } from "../../../contexts/searchContext";
 import { SellerProductContext } from "../../../contexts/sellerProductContext";
 
-function DailyDeal({ sellerProduct }) {
-  const [productCard, setProductCard] = useState([]);
+function DailyDeal({ sellerProduct, productCard }) {
+  // const [productCard, setProductCard] = useState([]);
   // const { sellerProduct, setSellerProduct } = useContext(SellerProductContext);
 
   // console.log(productCard);
   // เปลี่ยนจาก productCard เป็น sellerProduct............************************************
-  useEffect(() => {
-    const fetchProductCard = async () => {
-      try {
-        const res = await axios.get(`/products/allProduct`);
-        // const res = await axios.get(`/products/allProduct/?isActive=true`);
-        // const res = await axios.get(`/products/sold`);
-        console.log(res.data);
-        setProductCard(res.data.product);
-        // setSellerProduct(res.data.product);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchProductCard();
-  }, []);
+  // useEffect(() => {
+  //   const fetchProductCard = async () => {
+  //     try {
+  //       const res = await axios.get(`/products/allProduct`);
+  //       // const res = await axios.get(`/products/allProduct/?isActive=true`);
+  //       // const res = await axios.get(`/products/sold`);
+  //       console.log(res.data);
+  //       setProductCard(res.data.product);
+  //       // setSellerProduct(res.data.product);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   fetchProductCard();
+  // }, []);
   //............................ รอทำ search
   const { searchText } = useContext(SearchContext);
 

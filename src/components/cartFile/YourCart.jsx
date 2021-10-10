@@ -1,6 +1,15 @@
 import React from "react";
 
-function YourCart() {
+function YourCart({
+  salesProduct: {
+    productName,
+    price,
+    delivery,
+    amount,
+    productSize,
+    productPicture,
+  },
+}) {
   return (
     <>
       <div
@@ -20,6 +29,7 @@ function YourCart() {
             <input type="checkbox" className="form-check-input ms-3" />
             <h4 className="fw-bold fs-5 ms-2 mb-0">
               น้ำดื่มตราคริสตัน 1.5 ล. แพ็ค 6 ขวด 10 แพ๊ค ราคาพิเศษ
+              {/* {productName} */}
             </h4>
           </div>
           <div className="me-3">

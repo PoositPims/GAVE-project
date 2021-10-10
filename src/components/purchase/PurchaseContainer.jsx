@@ -6,7 +6,7 @@ import axios from "../../config/axios";
 import { NavLink, useLocation } from "react-router-dom";
 import SpecificPurInfo from "./SpecificPurInfo";
 
-function PurchaseContainer() {
+function PurchaseContainer({ onAdd, countCart }) {
   const location = useLocation();
   const [salesProduct, setSalesProduct] = useState({
     productName: "",
@@ -20,7 +20,7 @@ function PurchaseContainer() {
   });
 
   useEffect(() => {
-    console.log("fetch");
+    // console.log("fetch");
     const fetchSalesProduct = async () => {
       try {
         const res = await axios.get(`/products/${location.state.id}`);
@@ -40,7 +40,11 @@ function PurchaseContainer() {
         &gt; อาหารและเครื่องดื่ม &gt; เครื่องดื่ม &gt; น้ำดื่ม
         &gt;น้ำดื่มตราคริสตัล
       </p> */}
-      <MainPurchase salesProduct={salesProduct} />
+      <MainPurchase
+        salesProduct={salesProduct}
+        onAdd={onAdd}
+        countCart={countCart}
+      />
       {/* <SpecificPurInfo /> */}
       {/* <DetailPur /> */}
       {/* <CustomerPurReview /> */}

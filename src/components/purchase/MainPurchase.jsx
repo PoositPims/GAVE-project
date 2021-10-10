@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 function MainPurchase({
   salesProduct: {
+    id,
     productName,
     price,
     delivery,
@@ -10,17 +11,27 @@ function MainPurchase({
     productSize,
     productPicture,
   },
+  onAdd,
+  product,
+  countCart,
 }) {
   return (
     <>
       <div className=" d-flex bg-white container-80 justify-content-between ">
         <div className="col">
           <p className="fs-6">ขายโดย ร้านสงขลาค้าส่ง</p>
+          {/* ................................................... */}
+
+          <div className="d-flex nav-item me-1">
+            <NavLink to={{ pathname: "/cart", state: { id } }}>
+              <p className="fs-5 text-decoration-none  ">cart</p>
+              <button>{countCart}</button>
+            </NavLink>
+          </div>
+
+          {/* ................................................... */}
+
           <img src={productPicture} alt="" width="250px" height="250px" />
-          {/* <div className="d-flex">
-            <img src="bottle2.jpg" alt="" width="100px" height="100px" />
-            <img src="bottle2.jpg" alt="" width="100px" height="100px" />
-          </div> */}
           <p className="mt-2">
             มีสินค้าทั้งหมด
             <span className="px-2">{amount}</span>
@@ -85,11 +96,14 @@ function MainPurchase({
               <p>ชิ้น</p>
             </div>
             <div className="text-center mt-3">
-              <NavLink to="/cart">
-                <button className="btn btn-outline-primary me-2">
-                  เพิ่มไปยังรถเข็น
-                </button>
-              </NavLink>
+              {/* <NavLink to="/cart"> */}
+              <button
+                className="btn btn-outline-primary me-2"
+                onClick={() => onAdd(product)}
+              >
+                เพิ่มไปยังรถเข็น
+              </button>
+              {/* </NavLink> */}
               <NavLink to="/payment">
                 <button className="btn btn-warning">ซื้อสินค้า</button>
               </NavLink>
