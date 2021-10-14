@@ -2,21 +2,21 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "../../config/axios";
 import DeliveryStatusCard from "./DeliveryStatusCard";
 import { AuthContext } from "../../contexts/AuthContext";
+import { OrderContext } from "../../contexts/OrderContext";
 
 function DeliveryStatus() {
   const { user } = useContext(AuthContext);
-  const [sellerMustdos, setSellerMustdos] = useState({
-    firstName: "",
-    lastName: "",
-  });
+  const { sellerMustdos, setSellerMustdos } = useContext(OrderContext);
+  // console.log(sellerMustdos);
 
   useEffect(() => {
     const fetchSalesMustdo = async () => {
       try {
-        const res = await axios.get(`/users/${user.id}`);
-        console.log(res.data);
-        setSellerMustdos(res.data.user);
-        console.log(res);
+        // const res = await axios.get(`/orders/${user.id}`);
+        const res = await axios.get(`/orders/${user.id}`);
+        console.log(res.data.order);
+        setSellerMustdos(res.data.order);
+        // console.log(res.data.order.Cart.products);
       } catch (err) {
         console.log(err);
       }
@@ -24,24 +24,36 @@ function DeliveryStatus() {
     fetchSalesMustdo();
   }, []);
 
+  // sellerMustdos.Cart.forEach((item) => console.log(item));
+  // console.log(sellerMustdos.Cart?.products);
+  const show = sellerMustdos;
+  console.log(show);
+  const showMap = show?.map((item, index) => {
+    // console.log(item.Cart.products.map((item2) => item2.productId).length);
+    // console.log(item);
+    if (item.Cart.products.length === 0) {
+      return null;
+    } else {
+      return (
+        <div key={index}>
+          <DeliveryStatusCard
+            deliveryTo={item.User.firstName}
+            deliveryPlace={item.User.address1}
+            // productPicture="bottle.jpg"
+            products={item.Cart.products}
+            date={item.createdAt}
+          />
+        </div>
+      );
+    }
+  });
+  // console.log(show);
+
   return (
     <div>
       <div className="bg-white container px-0 mt-3">
         <h4 className="fw-bold fs-4 p-3 text-primary">รายการที่ต้องจัดส่ง</h4>
-        <DeliveryStatusCard
-          deliverStatus="ยังไม่ส่ง"
-          // deliveryTo="ปีเตอร์ แอมโบรสฟ"
-          deliveryTo={sellerMustdos?.firstName}
-          deliveryPlace="14/454 ซ.พาร์คแลนด์ 2 ถ.แมนยู เมืองแมนเชสเตอร์ สหราชอาณาจักร, 10000"
-          productPicture="bottle.jpg"
-        />
-        <DeliveryStatusCard
-          deliverStatus="ส่งแล้ว"
-          // deliveryTo="ปีเตอร์ แอมโบรสฟ"
-          deliveryTo={sellerMustdos?.firstName}
-          deliveryPlace="14/454 ซ.พาร์คแลนด์ 2 ถ.แมนยู เมืองแมนเชสเตอร์ สหราชอาณาจักร, 10000"
-          productPicture="bottle.jpg"
-        />
+        {showMap}
       </div>
     </div>
   );

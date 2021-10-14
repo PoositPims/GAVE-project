@@ -1,56 +1,44 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
 import axios from "../../config/axios";
+import CartPaymentCard from "./CartPaymentCard";
+import { CartContext } from "../../contexts/CartContext";
+import { SellerProductContext } from "../../contexts/sellerProductContext";
+import { NavLink, useLocation } from "react-router-dom";
+import { getNodeText } from "@testing-library/dom";
 
 // import { SellerProductContext } from "../../contexts/sellerProductContext";
 
-function CartPayment({
-  salesProduct: {
-    productName,
-    price,
-    delivery,
-    amount,
-    productSize,
-    productPicture,
-  },
-  onAdd,
-  product,
-}) {
-  // const { sellerProduct, onAdd, setSellerProduct } =
-  //   useContext(SellerProductContext);
+function CartPayment() {
+  const { yourCart, setYourCartt, cartId, userId, setUserId } =
+    useContext(CartContext);
+  // const { sellerProduct, setSellerProduct } = useContext(SellerProductContext);
+  console.log(yourCart);
+  // yourCart.forEach((item) => console.log(item.id));
 
-  // const location = useLocation();
+  let totalPrice = yourCart.reduce((a, c) => a + +c.price * c.quantity, 0);
+  let total = totalPrice;
+  // console.log(totalPrice);
 
-  // const [salesProduct, setSalesProduct] = useState({
-  //   productName: "",
-  //   productPicture: "",
-  //   price: "",
-  //   discount: "",
-  //   amount: "",
-  //   productSize: "",
-  //   delivery: "",
-  //   productPicture: "",
-  // });
-
-  // useEffect(() => {
-  //   console.log("fetch");
-  //   const fetchSalesProduct = async () => {
-  //     try {
-  //       const res = await axios.get(`/products/${location.state.id}`);
-  //       setSalesProduct(res.data.product);
-  //       // console.log(res);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   fetchSalesProduct();
-  // }, []);
+  const handleChilkPay = async (e) => {
+    e.preventDefault();
+    const res = await axios.post("/payments/request-payment", {
+      cartId: cartId,
+      userId: userId,
+    });
+    window.location.assign(res.data.ChillpayData.PaymentUrl);
+    // console.log(res.data.ChillpayData.PaymentUrl);
+    // console.log(res.data);
+    try {
+    } catch (err) {
+      console.dir(err);
+    }
+  };
 
   return (
     <>
       <div
         className="bg-white container-60 px-0 mt-3"
-        style={{ width: "400px" }}
+        // style={{ width: "400px" }}
       >
         <div className="bg-primary rounded">
           <h4
@@ -60,34 +48,26 @@ function CartPayment({
             ชำระเงิน
           </h4>
         </div>
-        <div className="d-flex justify-content-between container mt-3">
-          <p className="fw-bold">ยอดรวม ( 1 รายการ )</p>
-          {/* <p className="fw-bold">THB 480</p> */}
-          <p className="fw-bold">THB {price}</p>
-        </div>
-        {/* <div className="d-flex justify-content-between container mt-3">
-          <p className="fw-bold">ค่าจัดส่ง</p>
-          <p className="fw-bold">-</p>
-        </div> */}
+        {yourCart.map((item) => (
+          <CartPaymentCard
+            id={item.id}
+            key={item.id}
+            yourCart={item}
+            total={total}
+          />
+        ))}
+        <p className="fw-bold text-center fs-5">ยอดรวม {total} บาท</p>
 
-        <div className="d-flex justify-content-between container  mt-3">
-          <p className="fw-bold">ยอดรวมทั้งสิ้น</p>
-          <div>
-            <p className="my-0 fw-bold">THB 480</p>
-            <div
-              className="bg-primary text-white rounded"
-              style={{ height: "23px" }}
-            >
-              20% off
-            </div>
-          </div>
-        </div>
         <div className="text-center">
-          <NavLink to="/payment">
-            <button className="btn btn-warning mt-3" type="submit">
-              ดำเนินการชำระเงิน
-            </button>
-          </NavLink>
+          {/* <NavLink to="/payment"> */}
+          <button
+            className="btn btn-warning mt-3"
+            type="submit"
+            onClick={handleChilkPay}
+          >
+            ดำเนินการชำระเงิน
+          </button>
+          {/* </NavLink> */}
         </div>
       </div>
     </>

@@ -5,6 +5,8 @@ import App from "./App";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import { SearchProvider } from "./contexts/searchContext";
 import { SellerProductProvider } from "./contexts/sellerProductContext";
+import { OrderProvider } from "./contexts/OrderContext";
+import { CartProvider } from "./contexts/CartContext";
 // import { SellerProvider } from "./contexts/sellerContext";
 
 ReactDOM.render(
@@ -12,7 +14,11 @@ ReactDOM.render(
     <AuthContextProvider>
       <SearchProvider>
         <SellerProductProvider>
-          <App />
+          <OrderProvider>
+            <CartProvider>
+              <App />
+            </CartProvider>
+          </OrderProvider>
         </SellerProductProvider>
       </SearchProvider>
     </AuthContextProvider>

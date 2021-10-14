@@ -8,7 +8,7 @@ function DailyDealCard({ id, productPic, productName, productPrice }) {
         to={{ pathname: "/purchase", state: { id } }}
         className="text-decoration-none text-dark"
       >
-        <div className=" d-flex justify-content-evenly py-2 ">
+        <div className=" d-flex py-2 ms-3">
           <div className="text-center border border-1 border-Secondary rounded-3 shadow-lg ">
             <img
               src={productPic}

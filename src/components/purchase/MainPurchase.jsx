@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
+import axios from "../../config/axios";
+import { CartContext } from "../../contexts/CartContext";
 
 function MainPurchase({
   salesProduct: {
@@ -10,26 +12,56 @@ function MainPurchase({
     amount,
     productSize,
     productPicture,
+    Shop,
   },
-  onAdd,
-  product,
   countCart,
 }) {
+  // console.log(Shop?.password);
+  const [addProduct, setAddProduct] = useState({
+    productId: id,
+    quantity: 0,
+  });
+  const [err, setErr] = useState("");
+  // console.log(addProduct);
+
+  const handleAddToCart = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("/carts", {});
+    } catch (err) {
+      console.dir(err);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    if (e.target.name === "quantity" && isNaN(+e.target.value)) {
+      setErr("Quantity must be a number");
+    } else {
+      setAddProduct((curr) => ({
+        ...curr,
+        productId: id,
+        quantity: +e.target.value,
+      }));
+      setErr("");
+    }
+  };
+  const onAdd = async (addProduct) => {
+    const res = await axios.post("/carts", {
+      productId: id,
+      quantity: addProduct.quantity,
+      price,
+    });
+    // setAddProduct(res.data);
+    console.log("res", res.data);
+    // console.log(`result`, result);
+  };
   return (
     <>
       <div className=" d-flex bg-white container-80 justify-content-between ">
         <div className="col">
-          <p className="fs-6">ขายโดย ร้านสงขลาค้าส่ง</p>
-          {/* ................................................... */}
-
-          <div className="d-flex nav-item me-1">
-            <NavLink to={{ pathname: "/cart", state: { id } }}>
-              <p className="fs-5 text-decoration-none  ">cart</p>
-              <button>{countCart}</button>
-            </NavLink>
-          </div>
-
-          {/* ................................................... */}
+          <p className="fs-6">
+            ขายโดย {Shop?.firstName} {Shop?.lastName}
+          </p>
 
           <img src={productPicture} alt="" width="250px" height="250px" />
           <p className="mt-2">
@@ -61,52 +93,53 @@ function MainPurchase({
           </div>
         </div>
         <div className="col">
-          <h5 className="fw-bold mt-2">
-            {/* น้ำดื่มตราคริสตัน 1.5 ล. แพ็ค 6 ขวด ราคาพิเศษ */}
-            {productName}
-          </h5>
-          <div className="d-flex ">
-            {/* <h6 className="fw-bold text-decoration-line-through me-2">
-              THB 600
-              {price}
-            </h6> */}
+          <h5 className="fw-bold mt-2">{productName}</h5>
+          <div className="d-flex justify-content-between ">
             <h6 className="fw-bold me-2">ราคา</h6>
-            <h6 className="fw-bold me-2 bg-primary text-white rounded">
-              {price}
-            </h6>
-            <p>บาท</p>
-            {/* <div
-              className="bg-primary text-white rounded"
-              style={{ height: "23px" }}
-            >
-              20% off
-            </div> */}
+            <div className="d-flex">
+              <h6 className="fw-bold me-2 bg-primary text-white rounded">
+                {price}
+              </h6>
+              <p className="ms-2">บาท</p>
+            </div>
           </div>
           <div className="mt-3">
             <div className="d-flex justify-content-between mt-2">
-              <p>ขนาด</p>
+              <p>รายละเอียดสินค้า</p>
               <p>{productSize}</p>
             </div>
             <div className="d-flex justify-content-between mt-2">
               <p>การจัดส่ง</p>
               {delivery}
             </div>
-            <div className="d-flex justify-content-between mt-2">
-              <p>จำนวน</p>
-              <p>ชิ้น</p>
+
+            <div className="d-flex align-items-center justify-content-between ">
+              <p className="mt-2 ">จำนวน</p>
+              <div className="d-flex ">
+                <input
+                  type="text"
+                  name="quantity"
+                  onChange={handleInputChange}
+                  style={{ width: "100px" }}
+                />
+                <p className="ms-2">บาท</p>
+              </div>
             </div>
+            <div className="text-danger">{err && <p>{err}</p>}</div>
+
             <div className="text-center mt-3">
-              {/* <NavLink to="/cart"> */}
               <button
                 className="btn btn-outline-primary me-2"
-                onClick={() => onAdd(product)}
+                onClick={() => onAdd(addProduct)}
+                // onClick={() => onAdd(handleAddCart)}
+                to={{ state: id }}
               >
                 เพิ่มไปยังรถเข็น
               </button>
               {/* </NavLink> */}
-              <NavLink to="/payment">
+              {/* <NavLink to="/payment">
                 <button className="btn btn-warning">ซื้อสินค้า</button>
-              </NavLink>
+              </NavLink> */}
             </div>
           </div>
         </div>

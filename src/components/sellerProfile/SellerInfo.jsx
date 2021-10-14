@@ -1,8 +1,8 @@
 import React from "react";
 
-function SellerInfo(
-  {salesInfo:{shopName,shopAddress,created_at,firstName,lastName}}
-  ) {
+function SellerInfo({
+  salesInfo: { shopName, shopAddress, created_at, firstName, lastName },
+}) {
   return (
     <>
       <div className="bg-white container px-0 mt-3">
@@ -20,13 +20,12 @@ function SellerInfo(
             </p>
           </div>
           <div className="col " style={{ marginTop: "20px" }}>
-            <p>
+            {/* <p>
               <span className="fw-bold text-primary">
                 เปิดร้านเมื่อวันที่ :
               </span>
-              {/* {` 01-01-2020`} */}
               {created_at}
-            </p>
+            </p> */}
             <p>
               <span className="fw-bold text-primary">ที่อยู่ร้าน : </span>
               {shopAddress}

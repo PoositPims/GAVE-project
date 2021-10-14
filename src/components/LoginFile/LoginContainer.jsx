@@ -16,13 +16,16 @@ function LoginContainer() {
     username: "",
     password: "",
   });
-  const [error, setError] = useState({
-    username: "",
-    password: "",
-  });
+  // const [error, setError] = useState({
+  //   username: "",
+  //   password: "",
+  // });
+  const [error, setError] = useState("");
+  const [errorPass, setErrorPass] = useState("");
 
   const validateName = (value) => {
     if (isEmpty(value)) {
+      setError("name is require");
       //{payee: 'payee is require', amount:""Amount must be numeriv}
       // วิธีที่ 1
       // const newError = { ...Error };
@@ -36,20 +39,23 @@ function LoginContainer() {
   };
 
   const handleInputChange = (e) => {
-    if (e.target.value === "") {
-      // setError("กรุณากรอกข้อมูล");
-      setError((curErr) => ({
-        ...curErr,
-        value: validateName(e.target.value),
-        // ผิดตรง value
-      }));
+    if (e.target.value === "" && input.password.length < 8) {
+      setError("กรุณากรอกข้อมูล");
+      // setErrorPass("password must contain at least 8 characters");
+      // setError((curErr) => ({
+      //   ...curErr,
+      //   value: validateName(e.target.value),
+      // ผิดตรง value
+      // }));
       // ............................แก้บรรทัดนี้................................
     } else {
+      // setError("");
+      setInput((current) => ({ ...current, [e.target.name]: e.target.value }));
       setError("");
     }
     // console.log(e.target.value);
     // console.log(e.target.name);
-    setInput((current) => ({ ...current, [e.target.name]: e.target.value }));
+    // setInput((current) => ({ ...current, [e.target.name]: e.target.value }));
   };
   // อ้างถึง key ที่เป็น object
 
@@ -93,6 +99,7 @@ function LoginContainer() {
                 error={error}
                 type="text"
               />
+              <div className="text-danger">{error && <p>{error}</p>}</div>
               <LoginList
                 loginTitle="รหัสผ่าน"
                 onChange={handleInputChange}
@@ -101,6 +108,9 @@ function LoginContainer() {
                 error={error}
                 type="password"
               />
+              <div className="text-danger">
+                {errorPass && <p>{errorPass}</p>}
+              </div>
             </div>
             <div className="text-center">
               <button

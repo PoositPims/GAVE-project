@@ -8,8 +8,8 @@ function Cart() {
   return (
     <div>
       {/* <HeaderCart /> */}
-      <HeaderFinal headTitle=' | รถเข็น'/>
-      <div className="pb-3 pt-3 bg-grey ">
+      <HeaderFinal headTitle=" | รถเข็น" />
+      <div className="pb-3 pt-3 bg-grey " style={{ height: 656 }}>
         <CartContrainer />
       </div>
       <Footer />

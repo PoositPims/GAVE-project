@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@200;300&display=swap");
 
-/* div {
+div {
   outline: 1px dashed lime;
   font-family: "Prompt", sans-serif;
-} */
+}
 
 .text-pink {
   --bs-text-opacity: 1;

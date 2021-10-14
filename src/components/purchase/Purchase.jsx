@@ -7,9 +7,8 @@ import PurchaseContainer from "./PurchaseContainer";
 
 function Purchase() {
   // const [cartItems, setCartItems] = useState([]);
-  const { sellerProduct, onAdd, setSellerProduct } =
-    useContext(SellerProductContext);
-
+  const { sellerProduct, setSellerProduct } = useContext(SellerProductContext);
+  // console.log("sellerProduct...................", sellerProduct);
   // const onAdd = (product) => {
   //   const idx = sellerProduct.findIndex((item) => item.id === product.id);
   //   const newCart = [...sellerProduct];
@@ -25,8 +24,8 @@ function Purchase() {
     <div>
       {/* <Header /> */}
       <HeaderFinal countCart={sellerProduct.length} />
-      <div className="pb-3 pt-3 bg-grey bg-opacity-25 ">
-        <PurchaseContainer onAdd={onAdd} countCart={sellerProduct.length} />
+      <div className="pb-3 pt-3 bg-grey bg-opacity-25 " style={{ height: 656 }}>
+        <PurchaseContainer countCart={sellerProduct.length} />
       </div>
       <Footer />
     </div>

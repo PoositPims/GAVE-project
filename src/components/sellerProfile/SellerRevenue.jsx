@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import axios from "../../config/axios";
+import { AuthContext } from "../../contexts/AuthContext";
 
-function SellerRevenue({salesInfo:{renenue}}) {
+function SellerRevenue({ salesInfo: { renenue }, sellerMustdos }) {
+  const { user } = useContext(AuthContext);
+  console.log(sellerMustdos);
+
+  // let totalRevenue = salesProduct.amount.reduce((a, c) => a + c.price * c.qty, 0);
+  // let total = itemPrices;
+
+  // let totalRevenue = sellerMustdos.reduce(
+  //   (a, c) => a + c.price * c.quantity,
+  //   0
+  // );
+  // console.log(totalRevenue);
+
   return (
     <div>
       <div className="bg-white container px-0 mt-3">
@@ -16,9 +30,7 @@ function SellerRevenue({salesInfo:{renenue}}) {
               <span className="fw-bold text-warning ms-2 fs-4">{renenue}</span>
             </p>
           </div>
-          
         </div>
-       
       </div>
     </div>
   );

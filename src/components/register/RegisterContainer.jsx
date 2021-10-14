@@ -77,7 +77,6 @@ function RegisterContainer() {
         password: input.password,
         address1: input.address1,
         address2: "",
-    
       })
 
       .then(() => {
@@ -165,6 +164,15 @@ function RegisterContainer() {
                 name="confirmPass"
                 error={error}
                 type="password"
+                confirmPass
+              />
+              <RegisterList
+                registerTitle="ที่อยู่"
+                onChange={handleInputChange}
+                value={input.address1}
+                name="address1"
+                error={error}
+                type="address1"
               />
             </div>
             <div className="text-center mb-3">

@@ -58,10 +58,10 @@ function HeaderFinal({ headTitle, countCart, cart }) {
                   </div>
                   <div className="d-flex nav-item me-1">
                     <NavLink to="/cart">
-                      <p className="fs-5 text-decoration-none text-white ">
+                      <p className="fs-5 text-decoration-none text-white mt-2 ">
                         cart
                       </p>
-                      <button>{countCart}</button>
+                      {/* <button>{countCart}</button> */}
                     </NavLink>
                   </div>
                 </>
@@ -69,9 +69,18 @@ function HeaderFinal({ headTitle, countCart, cart }) {
                 <>
                   <div className="nav-item me-1">
                     <NavLink
+                      to="/sellerProfile"
+                      className=" text-white nav-link active fs-5"
+                      // onClick={handleClickLogout}
+                    >
+                      โปรไฟล์ผู้ขาย
+                    </NavLink>
+                  </div>
+                  <div className="nav-item me-1">
+                    <NavLink
                       to="/"
                       className=" text-white nav-link active fs-5"
-                      href="/"
+                      // href="/"
                       onClick={handleClickLogout}
                     >
                       ลงชื่อออก

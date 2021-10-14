@@ -41,7 +41,7 @@ function DailyDeal({ sellerProduct, productCard }) {
           ดีลแนะนำประจำวัน
         </h3>
       </div>
-      <div className=" d-flex flex-wrap justify-content-evenly bg-white mt-2 align-items-center container ">
+      <div className=" d-flex flex-wrap bg-white mt-2 align-items-center container ">
         {/* {productCard.map((item) => { */}
         {filterProducts.map((item) => {
           return (

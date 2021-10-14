@@ -1,4 +1,4 @@
-import React, { useState,useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import UserProfileList from "./UserProfileList";
 import { isEmpty } from "../services/validateService";
 import { NavLink } from "react-router-dom";
@@ -8,35 +8,35 @@ import { AuthContext } from "../../contexts/AuthContext";
 function UserProfileContainer() {
   // const [name, setName] = useState("");
   const { user } = useContext(AuthContext);
-  console.log(user)
+  console.log(user);
   const [usersInfos, setUsersInfos] = useState({
     firstName: "",
     lastName: "",
     telephone: "",
-    email: ""
-  })
-  
+    email: "",
+    address1: "",
+  });
+
   const [error, setError] = useState({
     firstName: "",
     lastName: "",
     phone: "",
-    email: ""
+    email: "",
+    address1: "",
   });
 
-  useEffect(()=>{
-    const fetchUserInfo = async() =>{
-      try{
-        const res = await axios.get(`/users/${user.id}`)
-        setUsersInfos(res.data.user)
-        console.log(res)
-      }catch(err){
-        console.log(err)
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const res = await axios.get(`/users/${user.id}`);
+        setUsersInfos(res.data.user);
+        console.log(res);
+      } catch (err) {
+        console.log(err);
       }
-    }
-    fetchUserInfo()
-  },[])
-
-  
+    };
+    fetchUserInfo();
+  }, []);
 
   // const handleInputChange = (e) => {
   //   if (e.target.value === "") {
@@ -63,7 +63,7 @@ function UserProfileContainer() {
         <div className="bg-white my-3 border rounded-3 container-60 border border-warning border-3">
           <div className="mt-3 col">
             <UserProfileList
-              userProfileTitle="ชื่อจริง"         
+              userProfileTitle="ชื่อจริง"
               name="firstName"
               error={error}
               userInfoProfile={usersInfos?.firstName}
@@ -85,6 +85,12 @@ function UserProfileContainer() {
               name="email"
               error={error}
               userInfoProfile={usersInfos?.email}
+            />
+            <UserProfileList
+              userProfileTitle="ที่อยู่"
+              name="address1"
+              error={error}
+              userInfoProfile={usersInfos?.address1}
             />
           </div>
           <div className="text-center mb-3">

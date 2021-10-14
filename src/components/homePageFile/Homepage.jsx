@@ -49,7 +49,7 @@ function Homepage() {
       <HeaderFinal />
       <SearchProduct />
       {/* <div style={{ width: 500 }}> */}
-      <div className="pb-3 pt-3 bg-grey ">
+      <div className="pb-3 pt-3 bg-grey " style={{ minHeight: "610px" }}>
         {/* <AdsCarousel /> */}
         <DailyDeal
           // sellerProduct={filterProducts}

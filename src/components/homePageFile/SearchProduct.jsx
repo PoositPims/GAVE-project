@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { SearchContext } from "../../contexts/searchContext";
+// import { IconName } from "react-icons/ai";
 
 function SearchProduct() {
   const { searchText, setSearchText } = useContext(SearchContext);
@@ -24,7 +25,7 @@ function SearchProduct() {
                 setSearchText();
               }}
             >
-              {/* <i class="bi bi-search"></i> */}
+              <i class="bi bi-search"></i>
               sent
             </button>
           </div>

@@ -16,10 +16,7 @@ function SalesLoginContainer() {
     password: "",
   });
 
-  const [error, setError] = useState({
-    username: "",
-    password: "",
-  });
+  const [error, setError] = useState("");
 
   const validateName = (value) => {
     if (isEmpty(value)) {
@@ -37,19 +34,19 @@ function SalesLoginContainer() {
 
   const handleInputChange = (e) => {
     if (e.target.value === "") {
-      // setError("กรุณากรอกข้อมูล");
-      setError((curErr) => ({
-        ...curErr,
-        value: validateName(e.target.value),
-        // ผิดตรง value
-      }));
+      setError("กรุณากรอกข้อมูล");
+      // setError((curErr) => ({
+      //   ...curErr,
+      //   value: validateName(e.target.value),
+      // ผิดตรง value
+      // }));
       // ............................แก้บรรทัดนี้................................
     } else {
+      setInput((current) => ({ ...current, [e.target.name]: e.target.value }));
       setError("");
     }
     // console.log(e.target.value);
     // console.log(e.target.name);
-    setInput((current) => ({ ...current, [e.target.name]: e.target.value }));
   };
 
   const handleSubmitLogin = async (e) => {
@@ -91,6 +88,7 @@ function SalesLoginContainer() {
                 error={error}
                 type="text"
               />
+              <div className="text-danger">{error && <p>{error}</p>}</div>
               <SalesLoginList
                 loginTitle="รหัสผ่าน"
                 onChange={handleInputChange}

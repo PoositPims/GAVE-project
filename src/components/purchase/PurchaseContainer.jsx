@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 // import CustomerPurReview from "./ReviewAndAds";
-import DetailPur from "./DetailPur";
+// import DetailPur from "./DetailPur";
 import MainPurchase from "./MainPurchase";
 import axios from "../../config/axios";
-import { NavLink, useLocation } from "react-router-dom";
-import SpecificPurInfo from "./SpecificPurInfo";
+import { useLocation } from "react-router-dom";
+// import SpecificPurInfo from "./SpecificPurInfo";
 
-function PurchaseContainer({ onAdd, countCart }) {
+function PurchaseContainer({ countCart }) {
   const location = useLocation();
   const [salesProduct, setSalesProduct] = useState({
     productName: "",
@@ -20,18 +20,18 @@ function PurchaseContainer({ onAdd, countCart }) {
   });
 
   useEffect(() => {
-    // console.log("fetch");
     const fetchSalesProduct = async () => {
       try {
         const res = await axios.get(`/products/${location.state.id}`);
         setSalesProduct(res.data.product);
-        console.log(res);
+        // console.log(res.data.product);
       } catch (err) {
         console.log(err);
       }
     };
     fetchSalesProduct();
   }, []);
+  // console.log(salesProduct);
 
   return (
     <>
@@ -40,11 +40,7 @@ function PurchaseContainer({ onAdd, countCart }) {
         &gt; อาหารและเครื่องดื่ม &gt; เครื่องดื่ม &gt; น้ำดื่ม
         &gt;น้ำดื่มตราคริสตัล
       </p> */}
-      <MainPurchase
-        salesProduct={salesProduct}
-        onAdd={onAdd}
-        countCart={countCart}
-      />
+      <MainPurchase salesProduct={salesProduct} countCart={countCart} />
       {/* <SpecificPurInfo /> */}
       {/* <DetailPur /> */}
       {/* <CustomerPurReview /> */}

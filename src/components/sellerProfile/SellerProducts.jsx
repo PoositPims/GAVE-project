@@ -31,6 +31,7 @@ function SellerProducts() {
   //     setSellerProductNotActive(newSellerProductNotActive);
   //   }
   // };
+  // console.log(sellerProduct);
 
   return (
     <>
@@ -42,35 +43,35 @@ function SellerProducts() {
           <h4 className="text-warning ">ลงขายแล้ว</h4>
           {/* <p className="fw-bold">สินค้า</p> */}
 
-          <div className="ms-3">
-            <div className=" d-flex flex-wrap bg-white mt-2 align-items-center container justify-content-evenly ">
-              {sellerProduct.map((item) => {
-                return (
-                  <NavLink
-                    to={{
-                      pathname: "/sellerEachPeoduct",
-                      state: {
-                        id: item.id,
-                        mode: "active",
-                      },
-                    }}
-                    className="text-decoration-none text-dark"
-                  >
-                    <SellerProductCard
-                      key={item.id}
-                      productName={item.productName}
-                      productPrice={item.price}
-                      productPic={item.productPicture}
-                    />
-                  </NavLink>
-                );
-              })}
-            </div>
+          {/* <div className="ms-3"> */}
+          <div className=" d-flex flex-wrap bg-white mt-2 align-items-center container ">
+            {sellerProduct.map((item) => {
+              return (
+                <NavLink
+                  to={{
+                    pathname: "/sellerEachPeoduct",
+                    state: {
+                      id: item.id,
+                      mode: "active",
+                    },
+                  }}
+                  className="text-decoration-none text-dark"
+                >
+                  <SellerProductCard
+                    key={item.id}
+                    productName={item.productName}
+                    productPrice={item.price}
+                    productPic={item.productPicture}
+                  />
+                </NavLink>
+              );
+            })}
           </div>
+          {/* </div> */}
         </div>
         <div className="border-bottom border-warning border-3 mb-3">
           <h4 className="text-warning ">ยังไม่ลงขาย</h4>
-          <div className=" d-flex flex-wrap bg-white mt-2 align-items-center container justify-content-evenly ">
+          <div className=" d-flex flex-wrap bg-white mt-2 align-items-center container  ">
             {sellerProductNotActive.map((item) => {
               return (
                 <NavLink
