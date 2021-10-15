@@ -35,26 +35,11 @@ function SellerProContainer() {
     };
     fetchSalesInfo();
   }, []);
-
+  // console.log("salesInfos.......................", salesInfos);
   // ...........................................................................
 
-  const { sellerMustdos, setSellerMustdos } = useContext(OrderContext);
   // console.log(sellerMustdos);
 
-  useEffect(() => {
-    const fetchSalesMustdo = async () => {
-      try {
-        // const res = await axios.get(`/orders/${user.id}`);
-        const res = await axios.get(`/orders/${user.id}`);
-        console.log(res.data.order);
-        setSellerMustdos(res.data.order);
-        // console.log(res.data.order.Cart.products);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchSalesMustdo();
-  }, []);
   // ...........................................................................
 
   // console.log(salesInfos)
@@ -62,8 +47,8 @@ function SellerProContainer() {
   return (
     <div>
       <SellerInfo salesInfo={salesInfos} />
-      <SellerRevenue salesInfo={salesInfos} sellerMustdos={sellerMustdos} />
-      <DeliveryStatus />
+      <SellerRevenue salesInfo={salesInfos} />
+      <DeliveryStatus salesInfos={salesInfos} />
       <SellerProducts />
     </div>
   );

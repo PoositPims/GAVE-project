@@ -4,17 +4,18 @@ import DeliveryStatusCard from "./DeliveryStatusCard";
 import { AuthContext } from "../../contexts/AuthContext";
 import { OrderContext } from "../../contexts/OrderContext";
 
-function DeliveryStatus() {
+function DeliveryStatus({ salesInfos }) {
   const { user } = useContext(AuthContext);
   const { sellerMustdos, setSellerMustdos } = useContext(OrderContext);
-  // console.log(sellerMustdos);
+  // console.log("salesInfos........................", salesInfos.id);
+  // console.log("user....................", user);
 
   useEffect(() => {
     const fetchSalesMustdo = async () => {
       try {
         // const res = await axios.get(`/orders/${user.id}`);
-        const res = await axios.get(`/orders/${user.id}`);
-        console.log(res.data.order);
+        const res = await axios.get(`/orders`);
+        // console.log(res.data.order);
         setSellerMustdos(res.data.order);
         // console.log(res.data.order.Cart.products);
       } catch (err) {
@@ -23,11 +24,25 @@ function DeliveryStatus() {
     };
     fetchSalesMustdo();
   }, []);
+  // console.log(sellerMustdos);
+  // console.log(sellerMustdos.filter((item) => item.Cart));
 
+  const tryFilter = sellerMustdos.filter((item) => {
+    let isHave = false;
+    item.Cart.products.forEach((item) => {
+      if (item.shopId === salesInfos.id) {
+        isHave = true;
+      }
+    });
+    return isHave;
+  });
+  console.log(tryFilter);
+
+  // console.log(salesInfos.id);
   // sellerMustdos.Cart.forEach((item) => console.log(item));
   // console.log(sellerMustdos.Cart?.products);
-  const show = sellerMustdos;
-  console.log(show);
+  const show = tryFilter;
+  // console.log(show);
   const showMap = show?.map((item, index) => {
     // console.log(item.Cart.products.map((item2) => item2.productId).length);
     // console.log(item);
@@ -39,9 +54,9 @@ function DeliveryStatus() {
           <DeliveryStatusCard
             deliveryTo={item.User.firstName}
             deliveryPlace={item.User.address1}
-            // productPicture="bottle.jpg"
             products={item.Cart.products}
             date={item.createdAt}
+            salesInfos={salesInfos}
           />
         </div>
       );

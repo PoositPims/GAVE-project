@@ -38,7 +38,7 @@ function DailyDeal({ sellerProduct, productCard }) {
     <>
       <div className="bg-white mt-3 align-items-center container-ping ">
         <h3 className="navbar-brand fs-4 fw-bolder py-0 my-0 px-4 ">
-          ดีลแนะนำประจำวัน
+          สินค้าทั้งหมด
         </h3>
       </div>
       <div className=" d-flex flex-wrap bg-white mt-2 align-items-center container ">

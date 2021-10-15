@@ -8,8 +8,10 @@ function DeliveryStatusCard({
   productPicture,
   products,
   date,
+  salesInfos,
 }) {
-  // console.log(date);
+  // console.log(products);
+  // console.log(salesInfos);
   return (
     <>
       <div className="mt-3 ">
@@ -31,14 +33,17 @@ function DeliveryStatusCard({
             </div>
           </p>
         </div>
-
-        {products.map((item, index) => (
-          <DeliveryStatusCardEach
-            key={index}
-            productId={item.productId}
-            quantity={item.quantity}
-          />
-        ))}
+        {products.map((item, index) => {
+          // console.log(item);
+          return (
+            <DeliveryStatusCardEach
+              key={index}
+              productId={item.productId}
+              quantity={item.quantity}
+              salesInfos={salesInfos}
+            />
+          );
+        })}
       </div>
     </>
   );

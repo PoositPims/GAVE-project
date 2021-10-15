@@ -81,7 +81,7 @@ function LoginContainer() {
 
   return (
     <>
-      <div className="bg-primary">
+      <div className="bg-primary" style={{ minHeight: "680px" }}>
         <p className="text-center text-white fs-4 mt-3">
           เข้าสู่ระบบเพื่อดีลที่โดนใจ !
         </p>

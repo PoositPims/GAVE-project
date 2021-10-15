@@ -8,8 +8,8 @@ function SaleRegister() {
   return (
     <div>
       {/* <HeaderSalesRegis /> */}
-      <HeaderFinal headTitle=' | ขาย'/>
-      <div className="pb-3 pt-3 bg-grey">
+      <HeaderFinal headTitle=" | ขาย" />
+      <div className="pb-3 pt-3 bg-grey" style={{ minHeight: "680px" }}>
         <SalesRegisContainer />
       </div>
       <Footer />

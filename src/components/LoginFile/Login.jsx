@@ -8,7 +8,11 @@ function Login() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <Header2 />
-      <LoginContainer />
+      <div
+      // style={{ minHeight: "680px" }}
+      >
+        <LoginContainer />
+      </div>
       <Footer />
     </div>
   );

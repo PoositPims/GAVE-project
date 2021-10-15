@@ -7,7 +7,7 @@ function CartProvider({ children }) {
   const [yourCart, setYourCart] = useState([]);
   const [cartId, setCartId] = useState([]);
   const [userId, setUserId] = useState([]);
-  // console.log(yourCart);
+
   // console.log(cartId);
   // console.log(yourCartProduct);
 
@@ -58,7 +58,7 @@ function CartProvider({ children }) {
   // };
 
   const onAdd = async (addProduct) => {
-    const { productId, quantity } = addProduct;
+    const { productId, quantity, shopId } = addProduct;
     // console.log(addProduct);
     await axios.post("/carts", addProduct);
 

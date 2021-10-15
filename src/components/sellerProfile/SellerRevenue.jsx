@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "../../config/axios";
 import { AuthContext } from "../../contexts/AuthContext";
 
-function SellerRevenue({ salesInfo: { renenue }, sellerMustdos }) {
+function SellerRevenue({ salesInfo: { renenue } }) {
   const { user } = useContext(AuthContext);
-  console.log(sellerMustdos);
+  // console.log(sellerMustdos);
 
   // let totalRevenue = salesProduct.amount.reduce((a, c) => a + c.price * c.qty, 0);
   // let total = itemPrices;

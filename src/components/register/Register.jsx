@@ -9,7 +9,9 @@ function Register() {
     <>
       <div className="d-flex flex-column min-vh-100">
         <HeaderRegister />
+        {/* <div style={{ minHeight: "630px" }}> */}
         <RegisterContainer />
+        {/* </div> */}
         <Footer />
       </div>
     </>

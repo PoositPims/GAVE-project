@@ -25,8 +25,8 @@ function SearchProduct() {
                 setSearchText();
               }}
             >
-              <i class="bi bi-search"></i>
-              sent
+              <i className="bi bi-search"></i>
+              {/* sent */}
             </button>
           </div>
         </div>

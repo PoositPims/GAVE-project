@@ -1,15 +1,13 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import axios from "../../config/axios";
 import { useHistory } from "react-router-dom";
 import { setToken } from "../services/localStorage";
 import jwtDecode from "jwt-decode";
 import { AuthContext } from "../../contexts/AuthContext";
 
-
 function SalesRegisContainer() {
   const history = useHistory();
   const { setUser } = useContext(AuthContext);
-  
 
   const [input, setInput] = useState({
     firstName: "",
@@ -20,7 +18,6 @@ function SalesRegisContainer() {
     password: "",
     confirmPassword: "",
     shopAddress: "",
-    
   });
 
   const [error, setError] = useState({
@@ -73,7 +70,7 @@ function SalesRegisContainer() {
     setInput((current) => ({ ...current, [e.target.name]: e.target.value }));
   };
   return (
-    <div>
+    <div style={{ marginTop: "50px" }}>
       <h3 className="fw-bold text-primary text-center">
         เริ่มต้นตอนนี้ เพื่อขายสินค้าของคุณ
       </h3>

@@ -16,7 +16,7 @@ function MainPurchase({
   },
   countCart,
 }) {
-  // console.log(Shop?.password);
+  // console.log(Shop);
   const [addProduct, setAddProduct] = useState({
     productId: id,
     quantity: 0,
@@ -48,6 +48,7 @@ function MainPurchase({
   const onAdd = async (addProduct) => {
     const res = await axios.post("/carts", {
       productId: id,
+      shopId: Shop.id,
       quantity: addProduct.quantity,
       price,
     });

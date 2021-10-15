@@ -75,8 +75,9 @@ function SalesLoginContainer() {
           เข้าสู่ระบบเพื่อดีลที่โดนใจ !
         </p>
         <div
-          className="bg-white my-3 border rounded-3 container-60 border border-warning border-3"
-          style={{ height: "430px" }}
+          className="bg-white  border rounded-3 container-60 border border-warning border-3"
+          // style={{ height: "430px" }}
+          style={{ height: "600px" }}
         >
           <form onSubmit={handleSubmitLogin}>
             <div className="mt-5 col">
